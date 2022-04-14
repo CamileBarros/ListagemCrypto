@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_controller.dart';
-import 'home_screen.dart';
+import 'home_wallet_screen.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -8,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeController(child: HomeScreen()),
+      home: const HomeWalletScreen(),
     );
   }
 }
