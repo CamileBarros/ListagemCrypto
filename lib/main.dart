@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listagem_crypto/bottom_nav.dart';
-import 'package:listagem_crypto/home_wallet_screen.dart';
-
-import 'myapp.dart';
+import 'package:listagem_crypto/modules/navigation/bottom_nav.dart';
 
 void main() {
   runApp(const MyApp());

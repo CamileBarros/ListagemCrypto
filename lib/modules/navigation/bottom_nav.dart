@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listagem_crypto/home_wallet_screen.dart';
+import 'package:listagem_crypto/modules/home/home_page.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({Key? key}) : super(key: key);
@@ -16,7 +16,15 @@ class BottomNavState extends State<BottomNav> {
     });
   }
 
-  final List<Widget> _screens = [const HomeWalletScreen()];
+  final List<Widget> _screens = [
+    const HomeWalletScreen(),
+    Container(
+      color: Colors.red,
+    ),
+    Container(
+      color: Colors.blue,
+    )
+  ];
 
   @override
   Widget build(BuildContext context) {
