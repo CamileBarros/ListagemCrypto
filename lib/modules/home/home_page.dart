@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:listagem_crypto/shared/model/crypto_list_model.dart';
+import 'package:collection/collection.dart';
 
 class HomeWalletScreen extends StatefulWidget {
   const HomeWalletScreen({Key? key}) : super(key: key);
@@ -9,17 +10,37 @@ class HomeWalletScreen extends StatefulWidget {
 }
 
 class _HomeWalletScreenState extends State<HomeWalletScreen> {
+  // final iniciais = ["BTC", "BTC", "BTC"];
+  final name = ["teste", "teste", "teste"];
+
   final List<CryptoListModel> containerDatas = [
-    CryptoListModel("BTC", "BitCoin", 500000, 35),
-    CryptoListModel("ETH", "ETheryum", 50000, 40),
-    CryptoListModel("LTC", "LiteCoin", 500000, 50),
+    CryptoListModel("BTC", "BitCoin", 5000, 30),
+    CryptoListModel("ETH", "Etherum", 5000, 40),
+    CryptoListModel("LTC", "LiteCoin", 6000, 35),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-          children: containerDatas.map((e) => Text(e.initialsCrypto)).toList()),
-    );
+    return ListView.separated(
+        separatorBuilder: (BuildContext context, int index) => const Divider(
+              height: 5,
+            ),
+        itemCount: containerDatas.length,
+        itemBuilder: (context, index) {
+          return Container(
+              child: ListTile(
+                  title: containerDatas
+                      .map((e) => Text(e.initialsCrypto))
+                      .toList(),
+                  subtitle: Text(name[index]),
+                  leading: CircleAvatar(
+                      backgroundImage: AssetImage("assets/images/bitcoin.png")),
+                  trailing: Text(name[index])));
+        });
+
+    // return Scaffold(
+    //   body: Column(
+    //       children: containerDatas.map((e) => Text(e.initialsCrypto)).toList()),
+    // );
   }
 }
