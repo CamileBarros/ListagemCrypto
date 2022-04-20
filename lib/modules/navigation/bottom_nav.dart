@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:listagem_crypto/modules/details/details_page.dart';
 import 'package:listagem_crypto/modules/home/home_page.dart';
 
 class BottomNav extends StatefulWidget {
@@ -18,9 +19,7 @@ class BottomNavState extends State<BottomNav> {
 
   final List<Widget> _screens = [
     const HomeWalletScreen(),
-    Container(
-      color: Colors.red,
-    ),
+    HomeDetails(),
     Container(
       color: Colors.blue,
     )
