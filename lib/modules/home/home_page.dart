@@ -10,14 +10,15 @@ class HomeWalletScreen extends StatefulWidget {
 }
 
 class _HomeWalletScreenState extends State<HomeWalletScreen> {
-  // final iniciais = ["BTC", "BTC", "BTC"];
+
+  final iniciais = ["BTC", "BTC", "BTC"];
   final name = ["teste", "teste", "teste"];
 
-  final List<CryptoListModel> containerDatas = [
-    CryptoListModel("BTC", "BitCoin", 5000, 30),
-    CryptoListModel("ETH", "Etherum", 5000, 40),
-    CryptoListModel("LTC", "LiteCoin", 6000, 35),
-  ];
+  // final List<CryptoListModel> containerDatas = [
+  //   CryptoListModel("BTC", "BitCoin", 5000, 30),
+  //   CryptoListModel("ETH", "Etherum", 5000, 40),
+  //   CryptoListModel("LTC", "LiteCoin", 6000, 35),
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +26,15 @@ class _HomeWalletScreenState extends State<HomeWalletScreen> {
         separatorBuilder: (BuildContext context, int index) => const Divider(
               height: 5,
             ),
-        itemCount: containerDatas.length,
+        itemCount: iniciais.length,
         itemBuilder: (context, index) {
           return Container(
               child: ListTile(
-                  title: containerDatas
-                      .map((e) => Text(e.initialsCrypto))
-                      .toList(),
+                  onTap: (int [index]) {
+                    
+
+                  },
+                  title: Text(iniciais[index]),
                   subtitle: Text(name[index]),
                   leading: CircleAvatar(
                       backgroundImage: AssetImage("assets/images/bitcoin.png")),
