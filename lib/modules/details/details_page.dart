@@ -10,6 +10,8 @@ class HomeDetails extends StatefulWidget {
   State<HomeDetails> createState() => _HomeDetailsState();
 }
 
+bool show = true;
+
 final List<CryptoListModel> containerDatas = [
   CryptoListModel("BTC", "BitCoin", 5000, 30),
   CryptoListModel("ETH", "Etherum", 5000, 40),
@@ -19,20 +21,43 @@ final List<CryptoListModel> containerDatas = [
 class _HomeDetailsState extends State<HomeDetails> {
   @override
   Widget build(BuildContext context) {
+    void _visibility(bool visibility) {
+      setState(() => show = visibility);
+    }
+
     return Scaffold(
-      body: ListView.separated(
-          separatorBuilder: (BuildContext context, int index) => const Divider(
-                height: 5,
-              ),
-          itemCount: containerDatas.length,
-          itemBuilder: (context, index) {
-            return Container(
-                child: ListTile(
-                    title: Text(containerDatas[index].initialsCrypto),
-                    subtitle: Text(containerDatas[index].nameCrypto),
-                    leading: ImageIcon(AssetImage("assets/images/bitcoin.png")),
-                    trailing: Text(containerDatas[index].initialsCrypto)));
-          }),
+      appBar: AppBar(title: const Text('Detalhes')),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          AnimatedOpacity(
+            opacity: show ? 1 : 0,
+            duration: Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+            child: Text("R\$ 2000,00",
+                style: Theme.of(context).textTheme.headline4),
+          ),
+          IconButton(
+            icon: Icon(Icons.visibility),
+            onPressed: () => _visibility(!show),
+          )
+        ],
+      ),
     );
   }
 }
+
+      // Column(children: [
+      //       ...containerDatas
+      //           .map((e) => Container(
+      //                 child: ListTile(
+      //                   leading:
+      //                       ImageIcon(AssetImage("assets/images/bitcoin.png")),
+      //                   title: Text(e.initialsCrypto),
+      //                   subtitle: Text(e.nameCrypto),
+      //                   trailing: Text(e.investedAmount.toString()),
+      //                   onTap: () => Navigator.pushNamed(context, '/details'),
+      //                 ),
+      //               ))
+      //           .toList()
+      //     ]),
