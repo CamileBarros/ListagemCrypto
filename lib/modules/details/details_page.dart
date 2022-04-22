@@ -27,21 +27,34 @@ class _HomeDetailsState extends State<HomeDetails> {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Detalhes')),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          AnimatedOpacity(
-            opacity: show ? 1 : 0,
-            duration: Duration(milliseconds: 500),
-            curve: Curves.easeInOut,
-            child: Text("R\$ 2000,00",
-                style: Theme.of(context).textTheme.headline4),
-          ),
-          IconButton(
-            icon: Icon(Icons.visibility),
-            onPressed: () => _visibility(!show),
-          )
-        ],
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+                child: Text(
+              'Carteira',
+              style: Theme.of(context).textTheme.headline4,
+            )),
+            Expanded(
+              child: AnimatedOpacity(
+                opacity: show ? 1 : 0,
+                duration: Duration(milliseconds: 500),
+                curve: Curves.easeInOut,
+                child: Text(
+                  "R\$ 2000,00",
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+              ),
+            ),
+            IconButton(
+              icon: Icon(Icons.visibility),
+              alignment: Alignment.topLeft,
+              onPressed: () => _visibility(!show),
+            ),
+          ],
+        ),
       ),
     );
   }
