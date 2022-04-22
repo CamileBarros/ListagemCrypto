@@ -19,7 +19,6 @@ class BottomNavState extends State<BottomNav> {
 
   final List<Widget> _screens = [
     const HomeWalletScreen(),
-    HomeDetails(),
     Container(
       color: Colors.blue,
     )

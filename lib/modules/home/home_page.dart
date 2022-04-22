@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:listagem_crypto/modules/details/details_page.dart';
 import 'package:listagem_crypto/shared/model/crypto_list_model.dart';
 
 class HomeWalletScreen extends StatefulWidget {
@@ -18,25 +17,20 @@ class _HomeWalletScreenState extends State<HomeWalletScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      ...containerDatas
-          .map((e) => Container(
-                child: ListTile(
-                  leading: ImageIcon(AssetImage("assets/images/bitcoin.png")),
-                  title: Text(e.initialsCrypto),
-                  subtitle: Text(e.nameCrypto),
-                  trailing: Text(e.investedAmount.toString()),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              HomeDetails(item: containerDatas)),
-                    );
-                  },
-                ),
-              ))
-          .toList()
-    ]);
+    return Scaffold(
+      body: Column(children: [
+        ...containerDatas
+            .map((e) => Container(
+                  child: ListTile(
+                    leading: ImageIcon(AssetImage("assets/images/bitcoin.png")),
+                    title: Text(e.initialsCrypto),
+                    subtitle: Text(e.nameCrypto),
+                    trailing: Text(e.investedAmount.toString()),
+                    onTap: () => Navigator.pushNamed(context, '/details'),
+                  ),
+                ))
+            .toList()
+      ]),
+    );
   }
 }
