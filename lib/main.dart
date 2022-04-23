@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:listagem_crypto/modules/details/details_page.dart';
+import 'package:listagem_crypto/modules/home/home_wallet.dart';
 import 'package:listagem_crypto/modules/home/home_page.dart';
-import 'package:listagem_crypto/modules/navigation/bottom_nav.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/navigation',
+      initialRoute: '/home',
       routes: {
-        '/home': (BuildContext context) => const HomeWalletScreen(),
+        '/homeWallet': (BuildContext context) => const HomeWalletPage(),
         '/details': (BuildContext context) => const HomeDetails(),
-        '/navigation': (BuildContext context) => const BottomNav()
+        '/home': (BuildContext context) => const HomePage()
       },
       debugShowCheckedModeBanner: false,
     );

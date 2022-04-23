@@ -1,21 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:listagem_crypto/shared/model/crypto_list_model.dart';
+import 'package:listagem_crypto/modules/home/home_wallet.dart';
 
-class HomeWalletScreen extends StatefulWidget {
-  const HomeWalletScreen({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomeWalletScreen> createState() => _HomeWalletScreenState();
+  HomePageState createState() => HomePageState();
 }
 
-bool show = true;
+class HomePageState extends State<HomePage> {
+  int currentPage = 0;
 
-class _HomeWalletScreenState extends State<HomeWalletScreen> {
-  final List<CryptoListModel> containerDatas = [
-    CryptoListModel("BTC", "BitCoin", 5000, 30),
-    CryptoListModel("ETH", "Etherum", 5000, 40),
-    CryptoListModel("LTC", "LiteCoin", 6000, 35),
+  void onTabTapped(int index) {
+    setState(() {
+      currentPage = index;
+    });
+  }
+
+  final List<Widget> pages = [
+    const HomeWalletPage(),
+    Container(
+      color: Colors.blue,
+    )
   ];
+
+  bool show = true;
 
   @override
   Widget build(BuildContext context) {
@@ -27,48 +36,51 @@ class _HomeWalletScreenState extends State<HomeWalletScreen> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(200),
         child: Container(
-          height: 200,
+          height: 230,
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Carteira",
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-                AnimatedOpacity(
-                  opacity: show ? 1 : 0,
-                  duration: Duration(milliseconds: 500),
-                  curve: Curves.easeInOut,
-                  child: Text(
-                    "R\$ 2000,00",
-                    style: Theme.of(context).textTheme.headline4,
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(Icons.visibility),
-                  alignment: Alignment.topLeft,
-                  onPressed: () => _visibility(!show),
-                ),
-              ],
+              child: ListTile(
+            title: Text(
+              "Carteira",
+              style: Theme.of(context).textTheme.headline4,
             ),
-          ),
+            subtitle: AnimatedOpacity(
+              opacity: show ? 1 : 0,
+              duration: Duration(milliseconds: 500),
+              curve: Curves.easeInOut,
+              child: Text(
+                "R\$5000,00",
+                style: Theme.of(context).textTheme.headline4,
+              ),
+            ),
+            trailing: IconButton(
+              icon: Icon(Icons.visibility),
+              alignment: Alignment.topLeft,
+              onPressed: () => _visibility(!show),
+            ),
+          )),
         ),
       ),
-      body: Column(children: [
-        ...containerDatas
-            .map((e) => Container(
-                  child: ListTile(
-                    leading: ImageIcon(AssetImage("assets/images/bitcoin.png")),
-                    title: Text(e.initialsCrypto),
-                    subtitle: Text(e.nameCrypto),
-                    trailing: Text(e.investedAmount.toString()),
-                    onTap: () => Navigator.pushNamed(context, '/details'),
-                  ),
-                ))
-            .toList()
-      ]),
+      body: pages[currentPage],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentPage,
+        selectedItemColor: const Color.fromARGB(255, 255, 0, 106),
+        onTap: onTabTapped,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.card_travel),
+            label: 'Carteira',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.wallet_giftcard),
+            label: 'Movimentação',
+          ),
+        ],
+      ),
     );
   }
+// Selected
 }
