@@ -18,19 +18,30 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-        ...containerDatas
-            .map((e) => Container(
-                  child: ListTile(
-                    leading: ImageIcon(AssetImage("assets/images/bitcoin.png")),
-                    title: Text(e.initialsCrypto),
-                    subtitle: Text(e.nameCrypto),
-                    trailing: Text(e.investedAmount.toString()),
-                    onTap: () => Navigator.pushNamed(context, '/details'),
-                  ),
-                ))
-            .toList()
-      ]),
+      body: ListView.separated(
+          separatorBuilder: (BuildContext context, int index) => const Divider(
+                height: 2,
+              ),
+          itemCount: containerDatas.length,
+          itemBuilder: (context, index) {
+            return Column(
+              children: [
+                ...containerDatas
+                    .map((e) => Container(
+                          child: ListTile(
+                            leading: ImageIcon(
+                                AssetImage("assets/images/bitcoin.png")),
+                            title: Text(e.initialsCrypto),
+                            subtitle: Text(e.nameCrypto),
+                            trailing: Text(e.investedAmount.toString()),
+                            onTap: () =>
+                                Navigator.pushNamed(context, '/details'),
+                          ),
+                        ))
+                    .toList()
+              ],
+            );
+          }),
     );
   }
 }
