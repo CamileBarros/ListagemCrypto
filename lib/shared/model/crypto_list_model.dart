@@ -4,10 +4,6 @@ class CryptoListModel {
   int investedAmount;
   int dayVariation;
 
-  CryptoListModel(
-    this.initialsCrypto,
-    this.nameCrypto,
-    this.investedAmount,
-    this.dayVariation,
-  );
+  CryptoListModel(this.initialsCrypto, this.nameCrypto, this.investedAmount,
+      this.dayVariation);
 }

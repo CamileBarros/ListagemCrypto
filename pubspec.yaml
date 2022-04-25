@@ -28,6 +28,8 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   flutter_riverpod: ^0.14.0+3
+  draw_graph: ^1.0.0
+
 
 
 

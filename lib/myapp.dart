@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'modules/home/home_wallet.dart';
+
+import 'modules/pages/wallet/home_wallet.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
