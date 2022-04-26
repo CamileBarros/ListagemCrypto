@@ -19,27 +19,20 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
         initialsCrypto: "ETC",
         nameCrypto: "Etherum",
         investedAmount: 5000,
-        dayVariation: 30),
+        dayVariation: -50),
     CryptoListModel(
         initialsCrypto: "LTC",
         nameCrypto: "LiteCoin",
         investedAmount: 3000,
-        dayVariation: 30)
+        dayVariation: 40)
   ];
 
-    bool show = true;
-    
-    
-    bool percentCripto = ( > 0) ? true : false;
+  bool show = true;
 
   @override
   Widget build(BuildContext context) {
     void _visibility(bool visibility) {
       setState(() => show = visibility);
-    }
-
-    Color _colorTag(int name) {
-      return Colors.green;
     }
 
     return Scaffold(
@@ -89,7 +82,9 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                                     Text(e.investedAmount.toString()),
                                     Container(
                                       decoration: BoxDecoration(
-                                          color: Colors.lightGreen,
+                                          color: e.dayVariation > 0
+                                              ? Colors.lightGreen
+                                              : Colors.red,
                                           borderRadius:
                                               BorderRadius.circular(10)),
                                       child: Text(e.dayVariation.toString()),
