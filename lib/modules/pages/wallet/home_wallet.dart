@@ -10,17 +10,36 @@ class HomeWalletPage extends StatefulWidget {
 
 class _HomeWalletPageState extends State<HomeWalletPage> {
   final List<CryptoListModel> containerDatas = [
-    CryptoListModel("BTC", "BitCoin", 5000, 30),
-    CryptoListModel("ETH", "Etherum", 5000, 40),
-    CryptoListModel("LTC", "LiteCoin", 6000, 35),
+    CryptoListModel(
+        initialsCrypto: "BTC",
+        nameCrypto: "BitCoin",
+        investedAmount: 5000,
+        dayVariation: 30),
+    CryptoListModel(
+        initialsCrypto: "ETC",
+        nameCrypto: "Etherum",
+        investedAmount: 5000,
+        dayVariation: 30),
+    CryptoListModel(
+        initialsCrypto: "LTC",
+        nameCrypto: "LiteCoin",
+        investedAmount: 3000,
+        dayVariation: 30)
   ];
 
-  bool show = true;
+    bool show = true;
+    
+    
+    bool percentCripto = ( > 0) ? true : false;
 
   @override
   Widget build(BuildContext context) {
     void _visibility(bool visibility) {
       setState(() => show = visibility);
+    }
+
+    Color _colorTag(int name) {
+      return Colors.green;
     }
 
     return Scaffold(
@@ -67,17 +86,14 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                                 curve: Curves.easeInOut,
                                 child: Column(
                                   children: [
-                                    Expanded(
-                                      child: Text(e.investedAmount.toString()),
-                                    ),
-                                    Expanded(
-                                        child: Container(
+                                    Text(e.investedAmount.toString()),
+                                    Container(
                                       decoration: BoxDecoration(
                                           color: Colors.lightGreen,
                                           borderRadius:
                                               BorderRadius.circular(10)),
-                                      child: Text('30\%'),
-                                    ))
+                                      child: Text(e.dayVariation.toString()),
+                                    )
                                   ],
                                 )),
                             onTap: () =>
