@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/homeWallet': (BuildContext context) => const HomeWalletPage(),
         '/homepagge': (BuildContext context) => HomePage(),
-        '/details': (BuildContext context) => const HomeDetails(),
+        '/details': (BuildContext context) => HomeDetails(),
         '/navBar': (BuildContext context) => const BottomNavBar()
       },
       debugShowCheckedModeBanner: false,
