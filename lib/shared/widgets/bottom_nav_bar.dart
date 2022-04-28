@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:listagem_crypto/modules/pages/home/home_page.dart';
-import 'package:listagem_crypto/modules/pages/wallet/home_wallet.dart';
+import 'package:listagem_crypto/screens/home/home_page.dart';
+import 'package:listagem_crypto/screens/wallet/home_wallet.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);

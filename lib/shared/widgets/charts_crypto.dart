@@ -1,7 +1,7 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
-import 'package:listagem_crypto/shared/model/charts_model.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
+import 'package:listagem_crypto/use_cases/model/charts_model.dart';
 
 class CryptoChart extends StatelessWidget {
   final List<ChartsCryptoList> data;

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:listagem_crypto/modules/pages/home/home_page.dart';
-
-import 'modules/bottomNavBar/bottom_nav.dart';
-import 'modules/pages/details/details_page.dart';
-import 'modules/pages/wallet/home_wallet.dart';
+import 'screens/details/details_page.dart';
+import 'screens/home/home_page.dart';
+import 'screens/wallet/home_wallet.dart';
+import 'shared/widgets/bottom_nav_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,9 +16,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/navBar',
       routes: {
-        '/homeWallet': (BuildContext context) => const HomeWalletPage(),
+        '/homeWallet': (BuildContext context) => HomeWalletPage(),
         '/homepagge': (BuildContext context) => HomePage(),
-        '/details': (BuildContext context) => HomeDetails(),
+        '/details': (BuildContext context) => const HomeDetails(),
         '/navBar': (BuildContext context) => const BottomNavBar()
       },
       debugShowCheckedModeBanner: false,

@@ -1,31 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:listagem_crypto/shared/model/crypto_list_model.dart';
+import 'package:listagem_crypto/data_source/data_list_wallet.dart';
+import 'package:listagem_crypto/shared/themes/app_colors.dart';
+import 'package:listagem_crypto/shared/themes/app_text_style.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:listagem_crypto/shared/widgets/list_tile_screen.dart';
+import 'package:listagem_crypto/use_cases/model/charts_model.dart';
 
 class HomeWalletPage extends StatefulWidget {
-  const HomeWalletPage({Key? key}) : super(key: key);
+  const HomeWalletPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<HomeWalletPage> createState() => _HomeWalletPageState();
 }
 
 class _HomeWalletPageState extends State<HomeWalletPage> {
-  final List<CryptoListModel> containerDatas = [
-    CryptoListModel(
-        initialsCrypto: "BTC",
-        nameCrypto: "BitCoin",
-        investedAmount: 5000,
-        dayVariation: 30),
-    CryptoListModel(
-        initialsCrypto: "ETC",
-        nameCrypto: "Etherum",
-        investedAmount: 5000,
-        dayVariation: -50),
-    CryptoListModel(
-        initialsCrypto: "LTC",
-        nameCrypto: "LiteCoin",
-        investedAmount: 3000,
-        dayVariation: 40)
-  ];
+  final containerDatas = ListDatasWallet().containerDatas;
 
   bool show = true;
 
@@ -44,7 +35,7 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                   child: ListTile(
                 title: Text(
                   "Carteira",
-                  style: Theme.of(context).textTheme.headline4,
+                  style: TextStyles.titlePrimary,
                 ),
                 subtitle: AnimatedOpacity(
                   opacity: show ? 1 : 0,
@@ -52,11 +43,14 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                   curve: Curves.easeInOut,
                   child: Text(
                     "R\$5000,00",
-                    style: Theme.of(context).textTheme.headline4,
+                    style: TextStyles.titlePrimary,
                   ),
                 ),
                 trailing: IconButton(
-                  icon: Icon(Icons.visibility),
+                  icon: Icon(
+                    Icons.visibility,
+                    color: AppColors.textPrimary,
+                  ),
                   alignment: Alignment.topLeft,
                   onPressed: () => _visibility(!show),
                 ),
@@ -91,8 +85,13 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                                     )
                                   ],
                                 )),
-                            onTap: () =>
-                                Navigator.pushNamed(context, '/details'),
+                            onTap: () => Navigator.pushNamed(
+                                context, '/details',
+                                arguments: ChartsCryptoList(
+                                    actualValue: 3000,
+                                    period: 10,
+                                    barColor: charts.ColorUtil.fromDartColor(
+                                        AppColors.linePrimary))),
                           ),
                         ),
                         Divider(
