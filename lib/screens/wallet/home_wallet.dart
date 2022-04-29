@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:listagem_crypto/data_source/data_list_wallet.dart';
+import 'package:listagem_crypto/screens/details/details_page.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:listagem_crypto/shared/widgets/list_tile_screen.dart';
-import 'package:listagem_crypto/use_cases/model/charts_model.dart';
 
 class HomeWalletPage extends StatefulWidget {
   const HomeWalletPage({
@@ -28,7 +26,7 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
 
     return Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(200),
+          preferredSize: const Size.fromHeight(200),
           child: Container(
               height: 230,
               child: Center(
@@ -39,7 +37,7 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                 ),
                 subtitle: AnimatedOpacity(
                   opacity: show ? 1 : 0,
-                  duration: Duration(milliseconds: 300),
+                  duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                   child: Text(
                     "R\$5000,00",
@@ -62,39 +60,34 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                 .map((e) => Column(
                       children: [
                         Container(
-                          child: ListTile(
-                            leading: ImageIcon(
-                                AssetImage("assets/images/bitcoin.png")),
-                            title: Text(e.initialsCrypto),
-                            subtitle: Text(e.nameCrypto),
-                            trailing: AnimatedOpacity(
-                                opacity: show ? 1 : 0,
-                                duration: Duration(milliseconds: 300),
-                                curve: Curves.easeInOut,
-                                child: Column(
-                                  children: [
-                                    Text(e.investedAmount.toString()),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                          color: e.dayVariation > 0
-                                              ? Colors.lightGreen
-                                              : Colors.red,
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: Text(e.dayVariation.toString()),
-                                    )
-                                  ],
-                                )),
-                            onTap: () => Navigator.pushNamed(
-                                context, '/details',
-                                arguments: ChartsCryptoList(
-                                    actualValue: 3000,
-                                    period: 10,
-                                    barColor: charts.ColorUtil.fromDartColor(
-                                        AppColors.linePrimary))),
-                          ),
-                        ),
-                        Divider(
+                            child: ListTile(
+                                leading: const ImageIcon(
+                                    AssetImage("assets/images/bitcoin.png")),
+                                title: Text(e.initialsCrypto),
+                                subtitle: Text(e.nameCrypto),
+                                trailing: AnimatedOpacity(
+                                    opacity: show ? 1 : 0,
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.easeInOut,
+                                    child: Column(
+                                      children: [
+                                        Text(e.investedAmount.toString()),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              color: e.dayVariation > 0
+                                                  ? Colors.lightGreen
+                                                  : Colors.red,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child:
+                                              Text(e.dayVariation.toString()),
+                                        )
+                                      ],
+                                    )),
+                                onTap: () => Navigator.pushNamed(
+                                    context, '/details',
+                                    arguments: ListDatasWallet()))),
+                        const Divider(
                           height: 2,
                         )
                       ],

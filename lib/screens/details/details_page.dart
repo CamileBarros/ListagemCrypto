@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:listagem_crypto/data_source/data_list_charts.dart';
+import 'package:listagem_crypto/data_source/data_bitcoin_charts.dart';
+import 'package:listagem_crypto/data_source/data_list_wallet.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
 import 'package:listagem_crypto/shared/widgets/charts_crypto.dart';
 
@@ -13,7 +14,8 @@ class HomeDetails extends StatefulWidget {
 }
 
 class _HomeDetailsState extends State<HomeDetails> {
-  final dataBTC = ListDataCharts().dataBTC;
+  final dataBTC = ListBitcoinCharts().dataBTC;
+  final containerDatas = ListDatasWallet().containerDatas;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class _HomeDetailsState extends State<HomeDetails> {
         children: [
           Container(
             child: Text(
-              'Moeda',
+              'conta',
               style: TextStyles.titlePrimary,
             ),
           ),

@@ -2,14 +2,14 @@ import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/use_cases/model/charts_model.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-class ListDataCharts {
-  final List<ChartsCryptoList> dataBTC = [
+class ListLitcoinCharts {
+  final List<ChartsCryptoList> dataLTC = [
     ChartsCryptoList(
-        actualValue: 3000,
+        actualValue: 2000,
         period: 5,
         barColor: charts.ColorUtil.fromDartColor(AppColors.linePrimary)),
     ChartsCryptoList(
-        actualValue: 6000,
+        actualValue: 3000,
         period: 10,
         barColor: charts.ColorUtil.fromDartColor(AppColors.linePrimary)),
     ChartsCryptoList(
@@ -17,7 +17,7 @@ class ListDataCharts {
         period: 15,
         barColor: charts.ColorUtil.fromDartColor(AppColors.linePrimary)),
     ChartsCryptoList(
-        actualValue: 5000,
+        actualValue: 4000,
         period: 20,
         barColor: charts.ColorUtil.fromDartColor(AppColors.linePrimary)),
     ChartsCryptoList(
