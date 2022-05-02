@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'screens/details/details_page.dart';
 import 'screens/home/home_page.dart';
 import 'screens/wallet/home_wallet.dart';
 import 'shared/widgets/bottom_nav_bar.dart';
@@ -18,7 +17,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/homeWallet': (BuildContext context) => HomeWalletPage(),
         '/homepagge': (BuildContext context) => HomePage(),
-        '/details': (BuildContext context) => const HomeDetails(),
         '/navBar': (BuildContext context) => const BottomNavBar()
       },
       debugShowCheckedModeBanner: false,

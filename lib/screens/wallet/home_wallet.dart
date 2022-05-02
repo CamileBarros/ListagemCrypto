@@ -14,7 +14,7 @@ class HomeWalletPage extends StatefulWidget {
 }
 
 class _HomeWalletPageState extends State<HomeWalletPage> {
-  final containerDatas = ListDatasWallet().containerDatas;
+  final containerDatas = DatasListWallet().containerDatas;
 
   bool show = true;
 
@@ -84,9 +84,23 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                                         )
                                       ],
                                     )),
-                                onTap: () => Navigator.pushNamed(
-                                    context, '/details',
-                                    arguments: ListDatasWallet()))),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HomeDetails(
+                                                initials: e.initialsCrypto,
+                                                name: e.nameCrypto,
+                                                variation: e.dayVariation,
+                                                invested: e.investedAmount,
+                                                min: e.cryptoInfo.valueMin,
+                                                max: e.cryptoInfo.valueMax,
+                                                actualValue:
+                                                    e.cryptoInfo.actualValue,
+                                                capMarket:
+                                                    e.cryptoInfo.marketCapt,
+                                              )));
+                                })),
                         const Divider(
                           height: 2,
                         )
