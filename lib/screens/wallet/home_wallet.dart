@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:listagem_crypto/data_source/data_list_wallet.dart';
 import 'package:listagem_crypto/screens/details/details_page.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
+import 'package:listagem_crypto/shared/themes/app_images.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
+import 'package:listagem_crypto/shared/widgets/button_convert_coin.dart';
 
 class HomeWalletPage extends StatefulWidget {
   const HomeWalletPage({
@@ -61,8 +63,16 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                       children: [
                         Container(
                             child: ListTile(
-                                leading: const ImageIcon(
-                                    AssetImage("assets/images/bitcoin.png")),
+                                leading: Container(
+                                  height: 48,
+                                  width: 48,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.primary,
+                                      borderRadius: BorderRadius.circular(48),
+                                      image: const DecorationImage(
+                                          image:
+                                              AssetImage(AppImages.iconBTC))),
+                                ),
                                 title: Text(e.initialsCrypto),
                                 subtitle: Text(e.nameCrypto),
                                 trailing: AnimatedOpacity(
@@ -72,15 +82,19 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                                     child: Column(
                                       children: [
                                         Text(e.investedAmount.toString()),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                              color: e.dayVariation > 0
-                                                  ? Colors.lightGreen
-                                                  : Colors.red,
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                          child:
-                                              Text(e.dayVariation.toString()),
+                                        SizedBox(
+                                          width: 53,
+                                          height: 20,
+                                          child: DecoratedBox(
+                                            decoration: BoxDecoration(
+                                                color: e.dayVariation > 0
+                                                    ? AppColors.statusPos
+                                                    : AppColors.statusNeg,
+                                                borderRadius:
+                                                    BorderRadius.circular(16)),
+                                            child:
+                                                Text(e.dayVariation.toString()),
+                                          ),
                                         )
                                       ],
                                     )),
