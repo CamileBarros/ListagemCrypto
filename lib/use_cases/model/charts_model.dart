@@ -1,6 +1,6 @@
 class ChartsCryptoList {
-  int actualValue;
+  int actualValueCrypto;
   DateTime period;
 
-  ChartsCryptoList({required this.actualValue, required this.period});
+  ChartsCryptoList({required this.actualValueCrypto, required this.period});
 }

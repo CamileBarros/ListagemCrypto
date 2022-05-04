@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'screens/home/home_page.dart';
 import 'screens/wallet/home_wallet.dart';
 import 'shared/widgets/bottom_nav_bar.dart';
 
 void main() {
+  Intl.defaultLocale = 'pt_BR';
   runApp(const MyApp());
 }
 

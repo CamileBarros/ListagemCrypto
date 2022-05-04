@@ -1,21 +1,22 @@
+import 'package:listagem_crypto/use_cases/model/app_model.dart';
 import 'package:listagem_crypto/use_cases/model/charts_model.dart';
 import 'package:listagem_crypto/use_cases/model/crypto_info_model.dart';
 
 class CryptoListModel {
   String initialsCrypto;
   String nameCrypto;
-  int investedAmount;
+  int investedCrypto;
   int dayVariation;
-  String nameButton;
   CryptoInfo cryptoInfo;
   ChartsCryptoList chartsCryptoList;
+  AppModel appModel;
 
   CryptoListModel(
       {required this.initialsCrypto,
       required this.nameCrypto,
-      required this.investedAmount,
+      required this.investedCrypto,
       required this.dayVariation,
-      required this.nameButton,
       required this.cryptoInfo,
-      required this.chartsCryptoList});
+      required this.chartsCryptoList,
+      required this.appModel});
 }

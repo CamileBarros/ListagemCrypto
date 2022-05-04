@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:listagem_crypto/data_source/data_list_wallet.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
@@ -12,7 +13,7 @@ class HomeDetails extends StatefulWidget {
   final int min;
   final int max;
   final int capMarket;
-  final int actualValue;
+  final int actualCrypto;
 
   const HomeDetails(
       {Key? key,
@@ -23,7 +24,7 @@ class HomeDetails extends StatefulWidget {
       required this.min,
       required this.max,
       required this.capMarket,
-      required this.actualValue})
+      required this.actualCrypto})
       : super(key: key);
 
   @override
@@ -31,6 +32,7 @@ class HomeDetails extends StatefulWidget {
 }
 
 class _HomeDetailsState extends State<HomeDetails> {
+  final formatCurrency = NumberFormat.simpleCurrency();
   final containerDatas = DatasListWallet().containerDatas;
 
   @override
@@ -40,7 +42,7 @@ class _HomeDetailsState extends State<HomeDetails> {
       body: Column(
         children: [
           Text(
-            'conta',
+            widget.name,
             style: TextStyles.titlePrimary,
           ),
           Center(
@@ -48,50 +50,56 @@ class _HomeDetailsState extends State<HomeDetails> {
             data: containerDatas,
             animate: false,
           )),
-          Text('Informações', style: TextStyles.titleText),
+          Text(containerDatas[0].appModel.nameInfo,
+              style: TextStyles.titleText),
           ListTile(
               title: Text(widget.name),
-              subtitle: const Text('teste'),
-              trailing: SizedBox(
-                width: 53,
-                height: 20,
-                child: DecoratedBox(
-                    decoration: BoxDecoration(
-                        color: widget.capMarket > 0
-                            ? AppColors.statusPos
-                            : AppColors.statusNeg,
-                        borderRadius: BorderRadius.circular(16)),
-                    child: Text(widget.capMarket.toString())),
-              )),
+              subtitle: Text(containerDatas[0].appModel.nameActualValue),
+              trailing: Text(formatCurrency.format(widget.actualCrypto))),
           Column(
             children: [
               Container(
                 child: ListTile(
-                  title: const Text('Cap de mercado'),
-                  trailing: Text(widget.variation.toString()),
+                  title: Text(containerDatas[0].appModel.nameMarketCap),
+                  trailing: SizedBox(
+                    width: 53,
+                    height: 20,
+                    child: DecoratedBox(
+                        decoration: BoxDecoration(
+                            color: widget.capMarket > 0
+                                ? AppColors.statusPos
+                                : AppColors.statusNeg,
+                            borderRadius: BorderRadius.circular(16)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 12, top: 2, right: 12),
+                          child: Text(widget.capMarket.toString() + "%"),
+                        )),
+                  ),
                 ),
               ),
               ListTile(
-                title: const Text('Valor Mínimo'),
-                trailing: Text(widget.min.toString()),
+                title: Text(containerDatas[0].appModel.nameMinValue),
+                trailing: Text(formatCurrency.format(widget.min)),
               ),
               ListTile(
-                title: const Text('Valor Maximo'),
-                trailing: Text(widget.max.toString()),
+                title: Text(containerDatas[0].appModel.nameMaxValue),
+                trailing: Text(formatCurrency.format(widget.max)),
               ),
               Column(
                 children: <Widget>[
                   Container(
                     child: SizedBox(
                       height: 44,
-                      width: 357,
+                      width: 300,
                       child: TextButton(
                           style: TextButton.styleFrom(
                               primary: Colors.white,
                               backgroundColor: AppColors.brandPrimary,
                               onSurface: AppColors.statusNeg),
                           onPressed: () {},
-                          child: const Text('Converter')),
+                          child:
+                              Text(containerDatas[0].appModel.nameBtnConvert)),
                     ),
                   )
                 ],

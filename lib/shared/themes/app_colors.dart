@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class AppColors {
-  static final primary = Color(0xFFF5F6FA);
+  static final primary = Color(0xFFE3E4EB);
   static final brandPrimary = Color(0xFFE02B57);
   static final background = Color(0xFFE5E5E5);
   static final statusPos = Color(0xFFA0F4E0);
