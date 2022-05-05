@@ -8,6 +8,7 @@ class AppModel {
   String nameMinValue;
   String nameMaxValue;
   String nameBtnConvert;
+  String nameDetails;
 
   AppModel(
       {required this.nameWallet,
@@ -18,5 +19,6 @@ class AppModel {
       required this.nameMarketCap,
       required this.nameMinValue,
       required this.nameMaxValue,
-      required this.nameBtnConvert});
+      required this.nameBtnConvert,
+      required this.nameDetails});
 }

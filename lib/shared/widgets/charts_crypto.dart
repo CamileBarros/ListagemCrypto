@@ -1,23 +1,21 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:listagem_crypto/data_source/data_list_wallet.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
 import 'package:listagem_crypto/use_cases/model/crypto_list_model.dart';
 
 class CryptoChart extends StatelessWidget {
-  final List<CryptoListModel> data;
   final bool animate;
+  final List<CryptoListModel> data;
 
   const CryptoChart({Key? key, required this.data, required this.animate})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final containerDatas = DatasListWallet().containerDatas;
-
     final formatCurrency = NumberFormat.simpleCurrency();
+
     List<charts.Series<CryptoListModel, DateTime>> series = [
       charts.Series(
           id: "charts",
@@ -39,8 +37,8 @@ class CryptoChart extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(
-                formatCurrency.format(
-                    containerDatas[0].chartsCryptoList.actualValueCrypto),
+                formatCurrency
+                    .format(data[0].chartsCryptoList.actualValueCrypto),
                 style: TextStyles.titlePrimary,
               ),
               Expanded(

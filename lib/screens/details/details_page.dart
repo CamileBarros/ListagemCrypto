@@ -14,6 +14,7 @@ class HomeDetails extends StatefulWidget {
   final int max;
   final int capMarket;
   final int actualCrypto;
+  final DateTime datePeriod;
 
   const HomeDetails(
       {Key? key,
@@ -24,7 +25,8 @@ class HomeDetails extends StatefulWidget {
       required this.min,
       required this.max,
       required this.capMarket,
-      required this.actualCrypto})
+      required this.actualCrypto,
+      required this.datePeriod})
       : super(key: key);
 
   @override
@@ -38,75 +40,82 @@ class _HomeDetailsState extends State<HomeDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.name)),
-      body: Column(
-        children: [
-          Text(
-            widget.name,
-            style: TextStyles.titlePrimary,
-          ),
-          Center(
-              child: CryptoChart(
-            data: containerDatas,
-            animate: false,
-          )),
-          Text(containerDatas[0].appModel.nameInfo,
-              style: TextStyles.titleText),
-          ListTile(
-              title: Text(widget.name),
-              subtitle: Text(containerDatas[0].appModel.nameActualValue),
-              trailing: Text(formatCurrency.format(widget.actualCrypto))),
-          Column(
-            children: [
-              Container(
-                child: ListTile(
-                  title: Text(containerDatas[0].appModel.nameMarketCap),
-                  trailing: SizedBox(
-                    width: 53,
-                    height: 20,
-                    child: DecoratedBox(
-                        decoration: BoxDecoration(
-                            color: widget.capMarket > 0
-                                ? AppColors.statusPos
-                                : AppColors.statusNeg,
-                            borderRadius: BorderRadius.circular(16)),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 12, top: 2, right: 12),
-                          child: Text(widget.capMarket.toString() + "%"),
-                        )),
+      appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: Text(containerDatas[0].appModel.nameDetails),
+        backgroundColor: AppColors.primary,
+        titleTextStyle: TextStyles.titleText,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text(
+              widget.name,
+              style: TextStyles.titlePrimary,
+            ),
+            Center(
+                child: CryptoChart(
+              data: containerDatas,
+              animate: false,
+            )),
+            Text(containerDatas[0].appModel.nameInfo,
+                style: TextStyles.titleText),
+            ListTile(
+                title: Text(widget.name),
+                subtitle: Text(containerDatas[0].appModel.nameActualValue),
+                trailing: Text(formatCurrency.format(widget.actualCrypto))),
+            Column(
+              children: [
+                Container(
+                  child: ListTile(
+                    title: Text(containerDatas[0].appModel.nameMarketCap),
+                    trailing: SizedBox(
+                      width: 53,
+                      height: 20,
+                      child: DecoratedBox(
+                          decoration: BoxDecoration(
+                              color: widget.capMarket > 0
+                                  ? AppColors.statusPos
+                                  : AppColors.statusNeg,
+                              borderRadius: BorderRadius.circular(16)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 12, top: 2, right: 12),
+                            child: Text(widget.capMarket.toString() + "%"),
+                          )),
+                    ),
                   ),
                 ),
-              ),
-              ListTile(
-                title: Text(containerDatas[0].appModel.nameMinValue),
-                trailing: Text(formatCurrency.format(widget.min)),
-              ),
-              ListTile(
-                title: Text(containerDatas[0].appModel.nameMaxValue),
-                trailing: Text(formatCurrency.format(widget.max)),
-              ),
-              Column(
-                children: <Widget>[
-                  Container(
-                    child: SizedBox(
-                      height: 44,
-                      width: 300,
-                      child: TextButton(
-                          style: TextButton.styleFrom(
-                              primary: Colors.white,
-                              backgroundColor: AppColors.brandPrimary,
-                              onSurface: AppColors.statusNeg),
-                          onPressed: () {},
-                          child:
-                              Text(containerDatas[0].appModel.nameBtnConvert)),
-                    ),
-                  )
-                ],
-              )
-            ],
-          ),
-        ],
+                ListTile(
+                  title: Text(containerDatas[0].appModel.nameMinValue),
+                  trailing: Text(formatCurrency.format(widget.min)),
+                ),
+                ListTile(
+                  title: Text(containerDatas[0].appModel.nameMaxValue),
+                  trailing: Text(formatCurrency.format(widget.max)),
+                ),
+                Column(
+                  children: <Widget>[
+                    Container(
+                      child: SizedBox(
+                        height: 44,
+                        width: 300,
+                        child: TextButton(
+                            style: TextButton.styleFrom(
+                                primary: Colors.white,
+                                backgroundColor: AppColors.brandPrimary,
+                                onSurface: AppColors.statusNeg),
+                            onPressed: () {},
+                            child: Text(
+                                containerDatas[0].appModel.nameBtnConvert)),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
