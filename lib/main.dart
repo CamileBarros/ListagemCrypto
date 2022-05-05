@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'screens/home/home_page.dart';
 import 'screens/wallet/home_wallet.dart';
 import 'shared/widgets/bottom_nav_bar.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         '/homepagge': (BuildContext context) => HomePage(),
         '/navBar': (BuildContext context) => const BottomNavBar()
       },
+      theme: ThemeData(primaryColor: AppColors.primary),
       debugShowCheckedModeBanner: false,
     );
   }
