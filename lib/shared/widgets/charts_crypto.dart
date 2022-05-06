@@ -16,7 +16,7 @@ class CryptoChart extends StatelessWidget {
   Widget build(BuildContext context) {
     final formatCurrency = NumberFormat.simpleCurrency();
 
-    List<charts.Series<CryptoListModel, DateTime>> series = [
+    List<charts.Series<CryptoListModel, num>> series = [
       charts.Series(
           id: "charts",
           data: data,
@@ -42,18 +42,10 @@ class CryptoChart extends StatelessWidget {
                 style: TextStyles.titlePrimary,
               ),
               Expanded(
-                child: charts.TimeSeriesChart(
-                  series,
-                  animate: animate,
-                  dateTimeFactory: const charts.LocalDateTimeFactory(),
-                  domainAxis: const charts.DateTimeAxisSpec(
-                    tickFormatterSpec: charts.AutoDateTimeTickFormatterSpec(
-                      day: charts.TimeFormatterSpec(
-                          format: 'dd', transitionFormat: 'dd MM'),
-                    ),
-                  ),
-                ),
-              )
+                child: charts.LineChart(series,
+                    animate: animate,
+                    domainAxis: const charts.EndPointsTimeAxisSpec()),
+              ),
             ],
           ),
         ),

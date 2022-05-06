@@ -14,7 +14,7 @@ class HomeDetails extends StatefulWidget {
   final int max;
   final int capMarket;
   final int actualCrypto;
-  final DateTime datePeriod;
+  final int datePeriod;
 
   const HomeDetails(
       {Key? key,

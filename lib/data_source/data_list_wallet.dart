@@ -23,8 +23,7 @@ class DatasListWallet {
           nameMaxValue: "Valor máximo",
           nameBtnConvert: "Converter moeda",
           nameDetails: "Detalhes"),
-      chartsCryptoList: ChartsCryptoList(
-          actualValueCrypto: 4000, period: DateTime(2020, 8, 5)),
+      chartsCryptoList: ChartsCryptoList(actualValueCrypto: 4000, period: 5),
     ),
     CryptoListModel(
       initialsCrypto: "ETH",
@@ -33,8 +32,7 @@ class DatasListWallet {
       dayVariation: -05,
       cryptoInfo: CryptoInfo(
           valueWallet: 5000, marketCapt: 3, valueMin: 5, valueMax: 6),
-      chartsCryptoList: ChartsCryptoList(
-          actualValueCrypto: 4000, period: DateTime(2020, 8, 5)),
+      chartsCryptoList: ChartsCryptoList(actualValueCrypto: 4000, period: 9),
       appModel: AppModel(
           nameWallet: "Carteira",
           nameHome: "Home",
@@ -54,8 +52,7 @@ class DatasListWallet {
       dayVariation: 4,
       cryptoInfo: CryptoInfo(
           valueWallet: 5000, marketCapt: 4, valueMin: 3, valueMax: 5),
-      chartsCryptoList: ChartsCryptoList(
-          actualValueCrypto: 3000, period: DateTime(2020, 10, 9)),
+      chartsCryptoList: ChartsCryptoList(actualValueCrypto: 3000, period: 20),
       appModel: AppModel(
           nameWallet: "Carteira",
           nameHome: "Home",
