@@ -23,7 +23,7 @@ class DatasListWallet {
           nameMaxValue: "Valor máximo",
           nameBtnConvert: "Converter moeda",
           nameDetails: "Detalhes"),
-      chartsCryptoList: ChartsCryptoList(actualValueCrypto: 4000, period: 5),
+      chartsCryptoList: ChartsCryptoList(actualValueCrypto: 2000, period: 5),
     ),
     CryptoListModel(
       initialsCrypto: "ETH",

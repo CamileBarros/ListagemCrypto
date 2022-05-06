@@ -42,10 +42,13 @@ class CryptoChart extends StatelessWidget {
                 style: TextStyles.titlePrimary,
               ),
               Expanded(
-                child: charts.LineChart(series,
-                    animate: animate,
-                    domainAxis: const charts.EndPointsTimeAxisSpec()),
-              ),
+                  child: charts.LineChart(series,
+                      domainAxis: const charts.NumericAxisSpec(
+                        tickProviderSpec: charts.BasicNumericTickProviderSpec(
+                            zeroBound: false),
+                        viewport: charts.NumericExtents(5, 20),
+                      ),
+                      animate: true)),
             ],
           ),
         ),
