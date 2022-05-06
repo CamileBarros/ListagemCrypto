@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
+import 'package:listagem_crypto/shared/widgets/chart_bars_crypto.dart';
 import 'package:listagem_crypto/use_cases/model/crypto_list_model.dart';
 
-class CryptoChart extends StatelessWidget {
+class CryptoLineChart extends StatelessWidget {
   final bool animate;
-  final List<CryptoListModel> data;
+  final List<CryptoListModel> dataLine;
 
-  const CryptoChart({Key? key, required this.data, required this.animate})
+  const CryptoLineChart(
+      {Key? key, required this.dataLine, required this.animate})
       : super(key: key);
 
   @override
@@ -19,7 +21,7 @@ class CryptoChart extends StatelessWidget {
     List<charts.Series<CryptoListModel, num>> series = [
       charts.Series(
           id: "charts",
-          data: data,
+          data: dataLine,
           domainFn: (CryptoListModel series, _) =>
               series.chartsCryptoList.period,
           measureFn: (CryptoListModel series, _) =>
@@ -29,7 +31,7 @@ class CryptoChart extends StatelessWidget {
     ];
 
     return Container(
-      height: 300,
+      height: 330,
       padding: const EdgeInsets.all(25),
       child: Card(
         child: Padding(
@@ -38,17 +40,30 @@ class CryptoChart extends StatelessWidget {
             children: <Widget>[
               Text(
                 formatCurrency
-                    .format(data[0].chartsCryptoList.actualValueCrypto),
+                    .format(dataLine[0].chartsCryptoList.actualValueCrypto),
                 style: TextStyles.titlePrimary,
               ),
               Expanded(
-                  child: charts.LineChart(series,
-                      domainAxis: const charts.NumericAxisSpec(
-                        tickProviderSpec: charts.BasicNumericTickProviderSpec(
-                            zeroBound: false),
-                        viewport: charts.NumericExtents(5, 20),
-                      ),
-                      animate: true)),
+                  child: charts.LineChart(
+                series,
+                animate: true,
+                domainAxis: const charts.NumericAxisSpec(
+                  tickProviderSpec:
+                      charts.BasicNumericTickProviderSpec(zeroBound: false),
+                  viewport: charts.NumericExtents(5, 20),
+                ),
+              )),
+              Align(
+                  alignment: Alignment.bottomRight,
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => CryptoBarsChart(
+                                    dataBars: dataBars, animate: animate))));
+                      },
+                      icon: const Icon(Icons.bar_chart)))
             ],
           ),
         ),

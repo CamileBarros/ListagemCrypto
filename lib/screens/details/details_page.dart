@@ -3,7 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:listagem_crypto/data_source/data_list_wallet.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
-import 'package:listagem_crypto/shared/widgets/charts_crypto.dart';
+import 'package:listagem_crypto/shared/widgets/chart_bars_crypto.dart';
+import 'package:listagem_crypto/shared/widgets/chart_line_crypto.dart';
 
 class HomeDetails extends StatefulWidget {
   final String name;
@@ -54,8 +55,8 @@ class _HomeDetailsState extends State<HomeDetails> {
               style: TextStyles.titlePrimary,
             ),
             Center(
-                child: CryptoChart(
-              data: containerDatas,
+                child: CryptoLineChart(
+              dataLine: containerDatas,
               animate: false,
             )),
             Text(containerDatas[0].appModel.nameInfo,
@@ -96,19 +97,17 @@ class _HomeDetailsState extends State<HomeDetails> {
                 ),
                 Column(
                   children: <Widget>[
-                    Container(
-                      child: SizedBox(
-                        height: 44,
-                        width: 300,
-                        child: TextButton(
-                            style: TextButton.styleFrom(
-                                primary: Colors.white,
-                                backgroundColor: AppColors.brandPrimary,
-                                onSurface: AppColors.statusNeg),
-                            onPressed: () {},
-                            child: Text(
-                                containerDatas[0].appModel.nameBtnConvert)),
-                      ),
+                    SizedBox(
+                      height: 44,
+                      width: 300,
+                      child: TextButton(
+                          style: TextButton.styleFrom(
+                              primary: Colors.white,
+                              backgroundColor: AppColors.brandPrimary,
+                              onSurface: AppColors.statusNeg),
+                          onPressed: () {},
+                          child:
+                              Text(containerDatas[0].appModel.nameBtnConvert)),
                     )
                   ],
                 )
