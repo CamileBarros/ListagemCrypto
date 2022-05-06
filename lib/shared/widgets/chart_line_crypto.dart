@@ -1,6 +1,7 @@
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:listagem_crypto/data_source/data_list_wallet.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
 import 'package:listagem_crypto/shared/widgets/chart_bars_crypto.dart';
@@ -17,6 +18,7 @@ class CryptoLineChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formatCurrency = NumberFormat.simpleCurrency();
+    final containerDatas = DatasListWallet().containerDatas;
 
     List<charts.Series<CryptoListModel, num>> series = [
       charts.Series(
@@ -61,7 +63,8 @@ class CryptoLineChart extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: ((context) => CryptoBarsChart(
-                                    dataBars: dataBars, animate: animate))));
+                                    dataBars: containerDatas,
+                                    animate: animate))));
                       },
                       icon: const Icon(Icons.bar_chart)))
             ],
