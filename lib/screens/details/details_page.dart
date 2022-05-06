@@ -38,8 +38,14 @@ class _HomeDetailsState extends State<HomeDetails> {
   final formatCurrency = NumberFormat.simpleCurrency();
   final containerDatas = DatasListWallet().containerDatas;
 
+  bool show = false;
+
   @override
   Widget build(BuildContext context) {
+    void _click(bool click) {
+      setState(() => show = click);
+    }
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
@@ -55,10 +61,17 @@ class _HomeDetailsState extends State<HomeDetails> {
               style: TextStyles.titlePrimary,
             ),
             Center(
-                child: CryptoLineChart(
-              dataLine: containerDatas,
-              animate: false,
-            )),
+              child: show
+                  ? CryptoBarsChart(dataBars: containerDatas, animate: false)
+                  : CryptoLineChart(dataLine: containerDatas, animate: false),
+            ),
+            Align(
+                alignment: Alignment.bottomRight,
+                child: IconButton(
+                    onPressed: () => _click(!show),
+                    icon: show
+                        ? const Icon(Icons.show_chart)
+                        : const Icon(Icons.bar_chart))),
             Text(containerDatas[0].appModel.nameInfo,
                 style: TextStyles.titleText),
             ListTile(

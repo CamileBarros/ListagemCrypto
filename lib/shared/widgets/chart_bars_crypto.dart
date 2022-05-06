@@ -42,11 +42,7 @@ class CryptoBarsChart extends StatelessWidget {
                     .format(dataBars[0].chartsCryptoList.actualValueCrypto),
                 style: TextStyles.titlePrimary,
               ),
-              Expanded(child: charts.BarChart(series, animate: true)),
-              Align(
-                  alignment: Alignment.bottomRight,
-                  child: IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.show_chart)))
+              Expanded(child: charts.BarChart(series, animate: true))
             ],
           ),
         ),

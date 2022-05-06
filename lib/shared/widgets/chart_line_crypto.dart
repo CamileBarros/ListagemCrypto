@@ -18,7 +18,6 @@ class CryptoLineChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final formatCurrency = NumberFormat.simpleCurrency();
-    final containerDatas = DatasListWallet().containerDatas;
 
     List<charts.Series<CryptoListModel, num>> series = [
       charts.Series(
@@ -55,18 +54,6 @@ class CryptoLineChart extends StatelessWidget {
                   viewport: charts.NumericExtents(5, 20),
                 ),
               )),
-              Align(
-                  alignment: Alignment.bottomRight,
-                  child: IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => CryptoBarsChart(
-                                    dataBars: containerDatas,
-                                    animate: animate))));
-                      },
-                      icon: const Icon(Icons.bar_chart)))
             ],
           ),
         ),
