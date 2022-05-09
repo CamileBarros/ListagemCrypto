@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:listagem_crypto/data_source/data_list_wallet.dart';
 import 'package:listagem_crypto/screens/home/home_page.dart';
 import 'package:listagem_crypto/screens/movement/home_movement.dart';
@@ -38,16 +39,15 @@ class BottomNavBarState extends State<BottomNavBar> {
         onTap: onTabTapped,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: const Icon(Icons.home),
-            label: containerDatas[0].appModel.nameHome,
-          ),
+              icon: const Icon(Icons.home),
+              label: AppLocalizations.of(context)!.nameHome),
           BottomNavigationBarItem(
             icon: const Icon(Icons.card_travel),
-            label: containerDatas[0].appModel.nameWallet,
+            label: AppLocalizations.of(context)!.nameWallet,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.wallet_giftcard),
-            label: containerDatas[0].appModel.nameMovement,
+            label: AppLocalizations.of(context)!.nameMovement,
           ),
         ],
       ),

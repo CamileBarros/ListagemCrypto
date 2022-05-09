@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:listagem_crypto/data_source/data_list_wallet.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
@@ -49,7 +50,7 @@ class _HomeDetailsState extends State<HomeDetails> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
-        title: Text(containerDatas[0].appModel.nameDetails),
+        title: Text(AppLocalizations.of(context)!.nameDetails),
         backgroundColor: AppColors.primary,
         titleTextStyle: TextStyles.titleText,
       ),
@@ -72,16 +73,16 @@ class _HomeDetailsState extends State<HomeDetails> {
                     icon: show
                         ? const Icon(Icons.show_chart)
                         : const Icon(Icons.bar_chart))),
-            Text(containerDatas[0].appModel.nameInfo,
+            Text(AppLocalizations.of(context)!.nameInfo,
                 style: TextStyles.titleText),
             ListTile(
                 title: Text(widget.name),
-                subtitle: Text(containerDatas[0].appModel.nameActualValue),
+                subtitle: Text(AppLocalizations.of(context)!.nameActualValue),
                 trailing: Text(formatCurrency.format(widget.actualCrypto))),
             Column(
               children: [
                 ListTile(
-                  title: Text(containerDatas[0].appModel.nameMarketCap),
+                  title: Text(AppLocalizations.of(context)!.nameMarketCap),
                   trailing: SizedBox(
                     width: 53,
                     height: 20,
@@ -99,11 +100,11 @@ class _HomeDetailsState extends State<HomeDetails> {
                   ),
                 ),
                 ListTile(
-                  title: Text(containerDatas[0].appModel.nameMinValue),
+                  title: Text(AppLocalizations.of(context)!.nameMinValue),
                   trailing: Text(formatCurrency.format(widget.min)),
                 ),
                 ListTile(
-                  title: Text(containerDatas[0].appModel.nameMaxValue),
+                  title: Text(AppLocalizations.of(context)!.nameMaxValue),
                   trailing: Text(formatCurrency.format(widget.max)),
                 ),
                 Column(
@@ -117,8 +118,8 @@ class _HomeDetailsState extends State<HomeDetails> {
                               backgroundColor: AppColors.brandPrimary,
                               onSurface: AppColors.statusNeg),
                           onPressed: () {},
-                          child:
-                              Text(containerDatas[0].appModel.nameBtnConvert)),
+                          child: Text(
+                              AppLocalizations.of(context)!.nameBtnConvert)),
                     )
                   ],
                 )

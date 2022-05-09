@@ -39,7 +39,7 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
               child: Center(
                 child: ListTile(
                   title: Text(
-                    AppLocalizations.of(context)!.walletName,
+                    AppLocalizations.of(context)!.nameWallet,
                     style: TextStyles.titlePrimary,
                   ),
                   subtitle: AnimatedOpacity(
