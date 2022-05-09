@@ -80,24 +80,22 @@ class _HomeDetailsState extends State<HomeDetails> {
                 trailing: Text(formatCurrency.format(widget.actualCrypto))),
             Column(
               children: [
-                Container(
-                  child: ListTile(
-                    title: Text(containerDatas[0].appModel.nameMarketCap),
-                    trailing: SizedBox(
-                      width: 53,
-                      height: 20,
-                      child: DecoratedBox(
-                          decoration: BoxDecoration(
-                              color: widget.capMarket > 0
-                                  ? AppColors.statusPos
-                                  : AppColors.statusNeg,
-                              borderRadius: BorderRadius.circular(16)),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 12, top: 2, right: 12),
-                            child: Text(widget.capMarket.toString() + "%"),
-                          )),
-                    ),
+                ListTile(
+                  title: Text(containerDatas[0].appModel.nameMarketCap),
+                  trailing: SizedBox(
+                    width: 53,
+                    height: 20,
+                    child: DecoratedBox(
+                        decoration: BoxDecoration(
+                            color: widget.capMarket > 0
+                                ? AppColors.statusPos
+                                : AppColors.statusNeg,
+                            borderRadius: BorderRadius.circular(16)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 12, top: 2, right: 12),
+                          child: Text(widget.capMarket.toString() + "%"),
+                        )),
                   ),
                 ),
                 ListTile(

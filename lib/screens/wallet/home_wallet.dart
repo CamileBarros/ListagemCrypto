@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:listagem_crypto/data_source/data_list_wallet.dart';
 import 'package:listagem_crypto/screens/details/details_page.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
@@ -38,7 +39,7 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
               child: Center(
                 child: ListTile(
                   title: Text(
-                    containerDatas[0].appModel.nameWallet,
+                    AppLocalizations.of(context)!.helloWorld,
                     style: TextStyles.titlePrimary,
                   ),
                   subtitle: AnimatedOpacity(
