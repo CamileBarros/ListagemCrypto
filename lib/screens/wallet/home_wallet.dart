@@ -6,6 +6,7 @@ import 'package:listagem_crypto/screens/details/details_page.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_images.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
+import 'package:listagem_crypto/shared/widgets/period_filter.dart';
 
 class HomeWalletPage extends StatefulWidget {
   const HomeWalletPage({
@@ -134,6 +135,7 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                                                     e.cryptoInfo.marketCapt,
                                                 datePeriod:
                                                     e.chartsCryptoList.period,
+                                                btnPeriod: PeriodFilter(),
                                               )));
                                 })),
                       ],

@@ -17,6 +17,7 @@ class HomeDetails extends StatefulWidget {
   final int capMarket;
   final int actualCrypto;
   final int datePeriod;
+  final Widget btnPeriod;
 
   const HomeDetails(
       {Key? key,
@@ -28,7 +29,8 @@ class HomeDetails extends StatefulWidget {
       required this.max,
       required this.capMarket,
       required this.actualCrypto,
-      required this.datePeriod})
+      required this.datePeriod,
+      required this.btnPeriod})
       : super(key: key);
 
   @override
@@ -57,24 +59,43 @@ class _HomeDetailsState extends State<HomeDetails> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Text(
-              widget.name,
-              style: TextStyles.titlePrimary,
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 10),
+              child: Text(
+                widget.name,
+                style: TextStyles.titlePrimary,
+              ),
             ),
             Center(
               child: show
                   ? CryptoBarsChart(dataBars: containerDatas, animate: false)
                   : CryptoLineChart(dataLine: containerDatas, animate: false),
             ),
-            Align(
-                alignment: Alignment.bottomRight,
-                child: IconButton(
-                    onPressed: () => _click(!show),
-                    icon: show
-                        ? const Icon(Icons.show_chart)
-                        : const Icon(Icons.bar_chart))),
-            Text(AppLocalizations.of(context)!.nameInfo,
-                style: TextStyles.titleText),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(25, 1, 20, 1),
+              child: Row(
+                children: [
+                  widget.btnPeriod,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 90),
+                    child: SizedBox(
+                      height: 35,
+                      width: 35,
+                      child: IconButton(
+                          onPressed: () => _click(!show),
+                          icon: show
+                              ? const Icon(Icons.show_chart)
+                              : const Icon(Icons.bar_chart)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(AppLocalizations.of(context)!.nameInfo,
+                  style: TextStyles.titleText),
+            ),
             ListTile(
                 title: Text(widget.name),
                 subtitle: Text(AppLocalizations.of(context)!.nameActualValue),
@@ -107,21 +128,24 @@ class _HomeDetailsState extends State<HomeDetails> {
                   title: Text(AppLocalizations.of(context)!.nameMaxValue),
                   trailing: Text(formatCurrency.format(widget.max)),
                 ),
-                Column(
-                  children: <Widget>[
-                    SizedBox(
-                      height: 44,
-                      width: 300,
-                      child: TextButton(
-                          style: TextButton.styleFrom(
-                              primary: Colors.white,
-                              backgroundColor: AppColors.brandPrimary,
-                              onSurface: AppColors.statusNeg),
-                          onPressed: () {},
-                          child: Text(
-                              AppLocalizations.of(context)!.nameBtnConvert)),
-                    )
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget>[
+                      SizedBox(
+                        height: 44,
+                        width: 300,
+                        child: TextButton(
+                            style: TextButton.styleFrom(
+                                primary: Colors.white,
+                                backgroundColor: AppColors.brandPrimary,
+                                onSurface: AppColors.statusNeg),
+                            onPressed: () {},
+                            child: Text(
+                                AppLocalizations.of(context)!.nameBtnConvert)),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
