@@ -6,6 +6,7 @@ import 'package:listagem_crypto/screens/details/details_page.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_images.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
+import 'package:listagem_crypto/shared/widgets/chart_bars_crypto.dart';
 import 'package:listagem_crypto/shared/widgets/period_filter.dart';
 
 class HomeWalletPage extends StatefulWidget {
@@ -81,11 +82,12 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                                   height: 48,
                                   width: 48,
                                   decoration: BoxDecoration(
-                                      color: AppColors.primary,
+                                      color: Colors.white,
                                       borderRadius: BorderRadius.circular(48),
-                                      image: const DecorationImage(
-                                          image:
-                                              AssetImage(AppImages.iconBTC))),
+                                      image: DecorationImage(
+                                          fit: BoxFit.fill,
+                                          image: AssetImage(
+                                              e.iconCrypto.assetName))),
                                 ),
                                 title: Text(e.initialsCrypto),
                                 subtitle: Text(e.nameCrypto),
@@ -129,13 +131,10 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                                                 invested: e.investedCrypto,
                                                 min: e.cryptoInfo.valueMin,
                                                 max: e.cryptoInfo.valueMax,
-                                                actualCrypto: e.chartsCryptoList
+                                                actualCrypto: e.cryptoInfo
                                                     .actualValueCrypto,
-                                                capMarket:
-                                                    e.cryptoInfo.marketCapt,
-                                                datePeriod:
-                                                    e.chartsCryptoList.period,
                                                 btnPeriod: PeriodFilter(),
+                                                // barChart: const CryptoBarsChart(animate: false, dataBars: []
                                               )));
                                 })),
                       ],

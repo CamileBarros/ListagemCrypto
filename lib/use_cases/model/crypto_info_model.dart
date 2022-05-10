@@ -1,12 +1,12 @@
 class CryptoInfo {
+  int actualValueCrypto;
   int valueWallet;
-  int marketCapt;
   int valueMin;
   int valueMax;
 
   CryptoInfo(
       {required this.valueWallet,
-      required this.marketCapt,
+      required this.actualValueCrypto,
       required this.valueMin,
       required this.valueMax});
 }

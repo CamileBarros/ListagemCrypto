@@ -22,9 +22,9 @@ class CryptoBarsChart extends StatelessWidget {
           id: "charts",
           data: dataBars,
           domainFn: (CryptoListModel series, _) =>
-              series.chartsCryptoList.period.toString(),
+              series.chartsCryptoList[0].period.toString(),
           measureFn: (CryptoListModel series, _) =>
-              series.chartsCryptoList.actualValueCrypto,
+              series.chartsCryptoList[0].marketCapt,
           colorFn: (_, __) =>
               charts.ColorUtil.fromDartColor(AppColors.linePrimary))
     ];
@@ -38,8 +38,7 @@ class CryptoBarsChart extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                formatCurrency
-                    .format(dataBars[0].chartsCryptoList.actualValueCrypto),
+                formatCurrency.format(dataBars[0].cryptoInfo.actualValueCrypto),
                 style: TextStyles.titlePrimary,
               ),
               Expanded(child: charts.BarChart(series, animate: true))

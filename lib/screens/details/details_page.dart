@@ -1,3 +1,4 @@
+import 'package:charts_flutter/flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -14,24 +15,24 @@ class HomeDetails extends StatefulWidget {
   final int variation;
   final int min;
   final int max;
-  final int capMarket;
   final int actualCrypto;
-  final int datePeriod;
   final Widget btnPeriod;
+  // final Widget barChart;
+  // final Widget lineChart;
 
-  const HomeDetails(
-      {Key? key,
-      required this.name,
-      required this.initials,
-      required this.invested,
-      required this.variation,
-      required this.min,
-      required this.max,
-      required this.capMarket,
-      required this.actualCrypto,
-      required this.datePeriod,
-      required this.btnPeriod})
-      : super(key: key);
+  const HomeDetails({
+    Key? key,
+    required this.name,
+    required this.initials,
+    required this.invested,
+    required this.variation,
+    required this.min,
+    required this.max,
+    required this.actualCrypto,
+    required this.btnPeriod,
+    // required this.barChart,
+    // required this.lineChart,
+  }) : super(key: key);
 
   @override
   State<HomeDetails> createState() => _HomeDetailsState();
@@ -109,14 +110,14 @@ class _HomeDetailsState extends State<HomeDetails> {
                     height: 20,
                     child: DecoratedBox(
                         decoration: BoxDecoration(
-                            color: widget.capMarket > 0
+                            color: widget.variation > 0
                                 ? AppColors.statusPos
                                 : AppColors.statusNeg,
                             borderRadius: BorderRadius.circular(16)),
                         child: Padding(
                           padding: const EdgeInsets.only(
                               left: 12, top: 2, right: 12),
-                          child: Text(widget.capMarket.toString() + "%"),
+                          child: Text(widget.variation.toString() + "%"),
                         )),
                   ),
                 ),

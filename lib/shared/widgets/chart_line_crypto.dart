@@ -15,19 +15,34 @@ class CryptoLineChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formatCurrency = NumberFormat.simpleCurrency();
-
+    // final formatCurrency = NumberFormat.simpleCurrency();
+    // print(dataLine[0].chartsCryptoList[0].);
     List<charts.Series<CryptoListModel, num>> series = [
       charts.Series(
           id: "charts",
           data: dataLine,
           domainFn: (CryptoListModel series, _) =>
-              series.chartsCryptoList.period,
+              series.chartsCryptoList[0].period,
           measureFn: (CryptoListModel series, _) =>
-              series.chartsCryptoList.actualValueCrypto,
+              series.chartsCryptoList[0].marketCapt,
           colorFn: (_, __) =>
               charts.ColorUtil.fromDartColor(AppColors.linePrimary))
     ];
+
+    // // ignore: prefer_function_declarations_over_variables
+    // List<charts.Series<CryptoListModel, num>> Function(CryptoListModel teste, dynamic _) series1 =
+    //   (CryptoListModel teste, _) => teste.chartsCryptoList.map((e) =>
+    //     charts.Series(
+    //       id: "charts",
+    //       data: dataLine,
+    //       domainFn: (CryptoListModel series, _) =>
+    //           e.period,
+    //       measureFn: (CryptoListModel series, _) =>
+    //           e.marketCapt,
+    //       colorFn: (_, __) =>
+    //           charts.ColorUtil.fromDartColor(AppColors.linePrimary))
+    //   ).toList()
+    // ;
 
     return Container(
       height: 330,
@@ -37,11 +52,10 @@ class CryptoLineChart extends StatelessWidget {
           padding: const EdgeInsets.all(9.0),
           child: Column(
             children: <Widget>[
-              Text(
-                formatCurrency
-                    .format(dataLine[0].chartsCryptoList.actualValueCrypto),
-                style: TextStyles.titlePrimary,
-              ),
+              // Text(
+              //   formatCurrency.format(dataLine[0].cryptoInfo.actualValueCrypto),
+              //   style: TextStyles.titlePrimary,
+              // ),
               Expanded(
                   child: charts.LineChart(
                 series,
