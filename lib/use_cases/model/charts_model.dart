@@ -1,6 +1,6 @@
 class ChartsCryptoList {
   num marketCapt;
-  num period;
+  int period;
 
   ChartsCryptoList({required this.marketCapt, required this.period});
 }

@@ -1,7 +1,7 @@
-import 'package:charts_flutter/flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:listagem_crypto/data_source/data_list_chart.dart';
 import 'package:listagem_crypto/data_source/data_list_wallet.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
@@ -41,6 +41,7 @@ class HomeDetails extends StatefulWidget {
 class _HomeDetailsState extends State<HomeDetails> {
   final formatCurrency = NumberFormat.simpleCurrency();
   final containerDatas = DatasListWallet().containerDatas;
+  final dataChart = DataListChart().dataChart;
 
   bool show = false;
 
@@ -69,8 +70,8 @@ class _HomeDetailsState extends State<HomeDetails> {
             ),
             Center(
               child: show
-                  ? CryptoBarsChart(dataBars: containerDatas, animate: false)
-                  : CryptoLineChart(dataLine: containerDatas, animate: false),
+                  ? CryptoBarsChart(datasBars: dataChart, animate: false)
+                  : CryptoLineChart(dataLine: dataChart, animate: false),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(25, 1, 20, 1),
