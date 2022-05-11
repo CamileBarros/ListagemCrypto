@@ -7,6 +7,7 @@ import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
 import 'package:listagem_crypto/shared/widgets/chart_bars_crypto.dart';
 import 'package:listagem_crypto/shared/widgets/chart_line_crypto.dart';
+import 'package:listagem_crypto/use_cases/model/charts_model.dart';
 
 class HomeDetails extends StatefulWidget {
   final String name;
@@ -41,11 +42,30 @@ class HomeDetails extends StatefulWidget {
 class _HomeDetailsState extends State<HomeDetails> {
   final formatCurrency = NumberFormat.simpleCurrency();
   final containerDatas = DatasListWallet().containerDatas;
-  final dataChart = DataListChart().dataChart;
+  // final dataChart = DataListChart().dataChart;
+  List<ChartsCryptoList> dataLine = <ChartsCryptoList>[];
+  num numberOfSpots = 10;
 
   bool show = false;
 
   @override
+  initState() {
+    super.initState();
+    dataLine = dateFilter(numberOfSpots);
+  }
+
+  List<ChartsCryptoList> dateFilter(num numberOfSpots) {
+    final List<ChartsCryptoList> dataChart = [];
+    num doubleInitial = 0;
+    for (var i = 0; i < numberOfSpots; i++) {
+      num doubleAdd = doubleInitial + i;
+      final ChartsCryptoList chart =
+          ChartsCryptoList(marketCapt: doubleAdd, period: doubleAdd.toInt());
+      dataChart.add(chart);
+    }
+    return dataChart;
+  }
+
   Widget build(BuildContext context) {
     void _click(bool click) {
       setState(() => show = click);
@@ -70,8 +90,8 @@ class _HomeDetailsState extends State<HomeDetails> {
             ),
             Center(
               child: show
-                  ? CryptoBarsChart(datasBars: dataChart, animate: false)
-                  : CryptoLineChart(dataLine: dataChart, animate: false),
+                  ? CryptoBarsChart(datasBars: dataLine, animate: false)
+                  : CryptoLineChart(dataLine: dataLine, animate: false),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 25, left: 25, bottom: 25),
