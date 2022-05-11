@@ -42,8 +42,7 @@ class HomeDetails extends StatefulWidget {
 class _HomeDetailsState extends State<HomeDetails> {
   final formatCurrency = NumberFormat.simpleCurrency();
   final containerDatas = DatasListWallet().containerDatas;
-  // final dataChart = DataListChart().dataChart;
-  List<ChartsCryptoList> dataLine = <ChartsCryptoList>[];
+  List<ChartsCryptoList> datasCharts = <ChartsCryptoList>[];
   num numberOfSpots = 10;
 
   bool show = false;
@@ -51,7 +50,7 @@ class _HomeDetailsState extends State<HomeDetails> {
   @override
   initState() {
     super.initState();
-    dataLine = dateFilter(numberOfSpots);
+    datasCharts = dateFilter(numberOfSpots);
   }
 
   List<ChartsCryptoList> dateFilter(num numberOfSpots) {
@@ -66,6 +65,7 @@ class _HomeDetailsState extends State<HomeDetails> {
     return dataChart;
   }
 
+  @override
   Widget build(BuildContext context) {
     void _click(bool click) {
       setState(() => show = click);
@@ -90,8 +90,8 @@ class _HomeDetailsState extends State<HomeDetails> {
             ),
             Center(
               child: show
-                  ? CryptoBarsChart(datasBars: dataLine, animate: false)
-                  : CryptoLineChart(dataLine: dataLine, animate: false),
+                  ? CryptoBarsChart(datasBars: datasCharts, animate: false)
+                  : CryptoLineChart(dataLine: datasCharts, animate: false),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 25, left: 25, bottom: 25),
