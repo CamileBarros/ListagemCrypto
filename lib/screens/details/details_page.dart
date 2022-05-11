@@ -74,29 +74,38 @@ class _HomeDetailsState extends State<HomeDetails> {
                   : CryptoLineChart(dataLine: dataChart, animate: false),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(25, 1, 20, 1),
-              child: Row(
-                children: [
-                  widget.btnPeriod,
-                  Padding(
-                    padding: const EdgeInsets.only(left: 90),
-                    child: SizedBox(
-                      height: 35,
-                      width: 35,
-                      child: IconButton(
-                          onPressed: () => _click(!show),
-                          icon: show
-                              ? const Icon(Icons.show_chart)
-                              : const Icon(Icons.bar_chart)),
-                    ),
+              padding: const EdgeInsets.only(right: 25, left: 25, bottom: 25),
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(15, 0, 15, 1),
+                  child: Row(
+                    children: [
+                      widget.btnPeriod,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25),
+                        child: SizedBox(
+                          height: 35,
+                          width: 35,
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: IconButton(
+                                onPressed: () => _click(!show),
+                                icon: show
+                                    ? const Icon(Icons.show_chart)
+                                    : const Icon(Icons.bar_chart)),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(AppLocalizations.of(context)!.nameInfo,
-                  style: TextStyles.titleText),
+            Text(AppLocalizations.of(context)!.nameInfo,
+                style: TextStyles.titleText),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Divider(height: 1, color: Colors.grey),
             ),
             ListTile(
                 title: Text(widget.name),

@@ -26,7 +26,7 @@ class CryptoLineChart extends StatelessWidget {
     ];
     return Container(
       height: 330,
-      padding: const EdgeInsets.all(25),
+      padding: const EdgeInsets.only(right: 25, left: 25, top: 25),
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(9.0),

@@ -13,15 +13,18 @@ class PeriodFilter extends StatelessWidget {
       children: [
         ...periodDays.map((e) => Row(
               children: [
-                SizedBox(
-                  height: 45,
-                  width: 45,
-                  child: TextButton(
-                      style: TextButton.styleFrom(
-                          primary: AppColors.textPrimary,
-                          onSurface: Colors.blueGrey),
-                      onPressed: () {},
-                      child: Text(e.days)),
+                Padding(
+                  padding: const EdgeInsets.all(0),
+                  child: SizedBox(
+                    height: 42,
+                    width: 42,
+                    child: TextButton(
+                        style: TextButton.styleFrom(
+                            primary: AppColors.textPrimary,
+                            onSurface: Colors.blueGrey),
+                        onPressed: () {},
+                        child: Text(e.days)),
+                  ),
                 ),
               ],
             ))
