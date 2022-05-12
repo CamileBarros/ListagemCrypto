@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:listagem_crypto/data_source/data_list_chart.dart';
 import 'package:listagem_crypto/data_source/data_list_wallet.dart';
+import 'package:listagem_crypto/data_source/data_period_filter.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
 import 'package:listagem_crypto/shared/widgets/chart_bars_crypto.dart';
@@ -43,21 +43,23 @@ class _HomeDetailsState extends State<HomeDetails> {
   final formatCurrency = NumberFormat.simpleCurrency();
   final containerDatas = DatasListWallet().containerDatas;
   List<ChartsCryptoList> datasCharts = <ChartsCryptoList>[];
-  num numberOfSpots = 10;
+  // num numberOfSpots = 10;
 
   bool show = false;
+  int value = 15;
 
   @override
   initState() {
     super.initState();
-    datasCharts = dateFilter(numberOfSpots);
+    datasCharts = dateFilter(value);
   }
 
-  List<ChartsCryptoList> dateFilter(num numberOfSpots) {
+  List<ChartsCryptoList> dateFilter(num value) {
     final List<ChartsCryptoList> dataChart = [];
     num doubleInitial = 0;
-    for (var i = 0; i < numberOfSpots; i++) {
+    for (var i = 0; i < value; i++) {
       num doubleAdd = doubleInitial + i;
+
       final ChartsCryptoList chart =
           ChartsCryptoList(marketCapt: doubleAdd, period: doubleAdd.toInt());
       dataChart.add(chart);
@@ -70,6 +72,8 @@ class _HomeDetailsState extends State<HomeDetails> {
     void _click(bool click) {
       setState(() => show = click);
     }
+
+    final periodDays = DataPeriodFilter().periodDays;
 
     return Scaffold(
       appBar: AppBar(
@@ -100,7 +104,28 @@ class _HomeDetailsState extends State<HomeDetails> {
                   padding: const EdgeInsets.fromLTRB(15, 0, 15, 1),
                   child: Row(
                     children: [
-                      widget.btnPeriod,
+                      ...periodDays.map((e) => Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(0),
+                                child: SizedBox(
+                                  height: 42,
+                                  width: 42,
+                                  child: TextButton(
+                                      style: TextButton.styleFrom(
+                                          primary: AppColors.textPrimary,
+                                          onSurface: Colors.blueGrey),
+                                      onPressed: () {
+                                        setState(() {
+                                          datasCharts =
+                                              dateFilter(e.periodDays);
+                                        });
+                                      },
+                                      child: Text(e.days)),
+                                ),
+                              ),
+                            ],
+                          )),
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: SizedBox(
