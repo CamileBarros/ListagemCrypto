@@ -5,6 +5,7 @@ import 'package:listagem_crypto/screens/home/home_page.dart';
 import 'package:listagem_crypto/screens/movement/home_movement.dart';
 import 'package:listagem_crypto/screens/wallet/home_wallet.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
+import 'package:listagem_crypto/shared/themes/app_images.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -39,14 +40,14 @@ class BottomNavBarState extends State<BottomNavBar> {
         onTap: onTabTapped,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: const Icon(Icons.home),
+              icon: const ImageIcon(AssetImage(AppImages.iconWarren)),
               label: AppLocalizations.of(context)!.nameHome),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.card_travel),
+            icon: const ImageIcon(AssetImage(AppImages.iconWallet)),
             label: AppLocalizations.of(context)!.nameWallet,
           ),
           BottomNavigationBarItem(
-            icon: const Icon(Icons.wallet_giftcard),
+            icon: const ImageIcon(AssetImage(AppImages.iconMovement)),
             label: AppLocalizations.of(context)!.nameMovement,
           ),
         ],

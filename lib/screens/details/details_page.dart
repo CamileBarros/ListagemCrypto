@@ -17,9 +17,6 @@ class HomeDetails extends StatefulWidget {
   final int min;
   final int max;
   final int actualCrypto;
-  final Widget btnPeriod;
-  // final Widget barChart;
-  // final Widget lineChart;
 
   const HomeDetails({
     Key? key,
@@ -30,9 +27,6 @@ class HomeDetails extends StatefulWidget {
     required this.min,
     required this.max,
     required this.actualCrypto,
-    required this.btnPeriod,
-    // required this.barChart,
-    // required this.lineChart,
   }) : super(key: key);
 
   @override
@@ -43,7 +37,6 @@ class _HomeDetailsState extends State<HomeDetails> {
   final formatCurrency = NumberFormat.simpleCurrency();
   final containerDatas = DatasListWallet().containerDatas;
   List<ChartsCryptoList> datasCharts = <ChartsCryptoList>[];
-  // num numberOfSpots = 10;
 
   bool show = false;
   int value = 15;

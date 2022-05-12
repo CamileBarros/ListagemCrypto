@@ -22,8 +22,6 @@ class DatasListWallet {
       dayVariation: -05,
       cryptoInfo: CryptoInfo(
           valueWallet: 5000, actualValueCrypto: 4000, valueMin: 5, valueMax: 6),
-
-      ///  [[1d][2d]]// 1d: lista, 2d: lista
     ),
     CryptoListModel(
       iconCrypto: const AssetImage(AppImages.iconLTC),
