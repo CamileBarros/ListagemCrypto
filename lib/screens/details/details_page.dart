@@ -17,7 +17,7 @@ class HomeDetails extends StatefulWidget {
   final int min;
   final int max;
   final int actualCrypto;
-  int teste;
+  int logicOfBtn;
 
   HomeDetails(
       {Key? key,
@@ -28,7 +28,7 @@ class HomeDetails extends StatefulWidget {
       required this.min,
       required this.max,
       required this.actualCrypto,
-      required this.teste})
+      required this.logicOfBtn})
       : super(key: key);
 
   @override
@@ -41,8 +41,10 @@ class _HomeDetailsState extends State<HomeDetails> {
   List<ChartsCryptoList> datasCharts = <ChartsCryptoList>[];
 
   bool show = false;
+  bool click = false;
   int value = 15;
   num number = 0;
+
   @override
   initState() {
     super.initState();
@@ -60,17 +62,18 @@ class _HomeDetailsState extends State<HomeDetails> {
           ChartsCryptoList(marketCapt: doubleAdd2, period: doubleAdd.toInt());
       dataChart.add(chart);
       number = value;
-      print(tes);
     }
     return dataChart;
   }
-
-  int tes = 2;
 
   @override
   Widget build(BuildContext context) {
     void _click(bool click) {
       setState(() => show = click);
+    }
+
+    void _clicked(bool clicked) {
+      setState(() => click = clicked);
     }
 
     final periodDays = DataPeriodFilter().periodDays;
@@ -122,11 +125,11 @@ class _HomeDetailsState extends State<HomeDetails> {
                                           onSurface: Colors.blueGrey,
                                           backgroundColor:
                                               number == e.periodDays
-                                                  ? AppColors.statusNeg
-                                                  : AppColors.statusPos),
+                                                  ? Colors.white
+                                                  : AppColors.primary),
                                       onPressed: () {
                                         setState(() {
-                                          _click(!show);
+                                          _clicked(!click);
                                           datasCharts =
                                               dateFilter(e.periodDays);
                                         });

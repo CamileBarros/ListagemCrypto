@@ -130,7 +130,7 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                                                 max: e.cryptoInfo.valueMax,
                                                 actualCrypto: e.cryptoInfo
                                                     .actualValueCrypto,
-                                                teste: x,
+                                                logicOfBtn: x,
                                               )));
                                 })),
                       ],
