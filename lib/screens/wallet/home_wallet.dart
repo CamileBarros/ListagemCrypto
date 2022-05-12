@@ -4,10 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:listagem_crypto/data_source/data_list_wallet.dart';
 import 'package:listagem_crypto/screens/details/details_page.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
-import 'package:listagem_crypto/shared/themes/app_images.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
-import 'package:listagem_crypto/shared/widgets/chart_bars_crypto.dart';
-import 'package:listagem_crypto/shared/widgets/period_filter.dart';
 
 class HomeWalletPage extends StatefulWidget {
   const HomeWalletPage({
@@ -21,8 +18,8 @@ class HomeWalletPage extends StatefulWidget {
 class _HomeWalletPageState extends State<HomeWalletPage> {
   final formatCurrency = NumberFormat.simpleCurrency();
   final containerDatas = DatasListWallet().containerDatas;
-
   bool show = true;
+  int x = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -133,6 +130,7 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                                                 max: e.cryptoInfo.valueMax,
                                                 actualCrypto: e.cryptoInfo
                                                     .actualValueCrypto,
+                                                teste: x,
                                               )));
                                 })),
                       ],

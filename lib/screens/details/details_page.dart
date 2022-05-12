@@ -17,17 +17,19 @@ class HomeDetails extends StatefulWidget {
   final int min;
   final int max;
   final int actualCrypto;
+  int teste;
 
-  const HomeDetails({
-    Key? key,
-    required this.name,
-    required this.initials,
-    required this.invested,
-    required this.variation,
-    required this.min,
-    required this.max,
-    required this.actualCrypto,
-  }) : super(key: key);
+  HomeDetails(
+      {Key? key,
+      required this.name,
+      required this.initials,
+      required this.invested,
+      required this.variation,
+      required this.min,
+      required this.max,
+      required this.actualCrypto,
+      required this.teste})
+      : super(key: key);
 
   @override
   State<HomeDetails> createState() => _HomeDetailsState();
@@ -40,7 +42,7 @@ class _HomeDetailsState extends State<HomeDetails> {
 
   bool show = false;
   int value = 15;
-
+  num number = 0;
   @override
   initState() {
     super.initState();
@@ -52,13 +54,18 @@ class _HomeDetailsState extends State<HomeDetails> {
     num doubleInitial = 0;
     for (var i = 0; i < value; i++) {
       num doubleAdd = doubleInitial + i;
+      num doubleAdd2 = doubleInitial + i / 2;
 
       final ChartsCryptoList chart =
-          ChartsCryptoList(marketCapt: doubleAdd, period: doubleAdd.toInt());
+          ChartsCryptoList(marketCapt: doubleAdd2, period: doubleAdd.toInt());
       dataChart.add(chart);
+      number = value;
+      print(tes);
     }
     return dataChart;
   }
+
+  int tes = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -87,8 +94,13 @@ class _HomeDetailsState extends State<HomeDetails> {
             ),
             Center(
               child: show
-                  ? CryptoBarsChart(datasBars: datasCharts, animate: false)
-                  : CryptoLineChart(dataLine: datasCharts, animate: false),
+                  ? CryptoBarsChart(
+                      datasBars: datasCharts,
+                      animate: false,
+                      data: widget,
+                    )
+                  : CryptoLineChart(
+                      dataLine: datasCharts, animate: false, data: widget),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 25, left: 25, bottom: 25),
@@ -107,9 +119,14 @@ class _HomeDetailsState extends State<HomeDetails> {
                                   child: TextButton(
                                       style: TextButton.styleFrom(
                                           primary: AppColors.textPrimary,
-                                          onSurface: Colors.blueGrey),
+                                          onSurface: Colors.blueGrey,
+                                          backgroundColor:
+                                              number == e.periodDays
+                                                  ? AppColors.statusNeg
+                                                  : AppColors.statusPos),
                                       onPressed: () {
                                         setState(() {
+                                          _click(!show);
                                           datasCharts =
                                               dateFilter(e.periodDays);
                                         });
