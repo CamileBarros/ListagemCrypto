@@ -111,6 +111,7 @@ class _HomeDetailsState extends State<HomeDetails> {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(15, 0, 15, 1),
                   child: Row(
+                    mainAxisSize: MainAxisSize.max,
                     children: [
                       ...periodDays.map((e) => Row(
                             children: [
