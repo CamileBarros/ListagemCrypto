@@ -7,6 +7,7 @@ class CryptoListModel {
   String nameCrypto;
   int investedCrypto;
   int dayVariation;
+  DateTime purchaseDate;
   CryptoInfo cryptoInfo;
 
   CryptoListModel({
@@ -15,6 +16,7 @@ class CryptoListModel {
     required this.nameCrypto,
     required this.investedCrypto,
     required this.dayVariation,
+    required this.purchaseDate,
     required this.cryptoInfo,
   });
 }

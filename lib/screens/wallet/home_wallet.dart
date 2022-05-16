@@ -19,7 +19,7 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
   final formatCurrency = NumberFormat.simpleCurrency();
   final containerDatas = DatasListWallet().containerDatas;
   bool show = true;
-  int x = 2;
+  int x = 2; // part of logic of colors of the period's button
 
   @override
   Widget build(BuildContext context) {

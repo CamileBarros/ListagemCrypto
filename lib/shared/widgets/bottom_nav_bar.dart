@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:listagem_crypto/data_source/data_list_wallet.dart';
 import 'package:listagem_crypto/screens/home/home_page.dart';
 import 'package:listagem_crypto/screens/movement/home_movement.dart';
 import 'package:listagem_crypto/screens/wallet/home_wallet.dart';
@@ -15,7 +14,6 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class BottomNavBarState extends State<BottomNavBar> {
-  final containerDatas = DatasListWallet().containerDatas;
   int currentPage = 0;
 
   void onTabTapped(int index) {

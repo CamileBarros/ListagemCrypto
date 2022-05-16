@@ -11,6 +11,7 @@ class DatasListWallet {
       nameCrypto: "BitCoin",
       investedCrypto: 2000,
       dayVariation: 3,
+      purchaseDate: DateTime(2022, 2, 23),
       cryptoInfo: CryptoInfo(
           valueWallet: 5000, actualValueCrypto: 2400, valueMin: 2, valueMax: 4),
     ),
@@ -20,6 +21,7 @@ class DatasListWallet {
       nameCrypto: "Ethereum",
       investedCrypto: 3000,
       dayVariation: -05,
+      purchaseDate: DateTime(2022, 3, 15),
       cryptoInfo: CryptoInfo(
           valueWallet: 5000, actualValueCrypto: 4000, valueMin: 5, valueMax: 6),
     ),
@@ -29,6 +31,7 @@ class DatasListWallet {
       nameCrypto: "LiteCoin",
       investedCrypto: 4000,
       dayVariation: 4,
+      purchaseDate: DateTime(2022, 4, 13),
       cryptoInfo: CryptoInfo(
           valueWallet: 5000, actualValueCrypto: 3000, valueMin: 3, valueMax: 5),
     ),
