@@ -5,6 +5,7 @@ import 'package:listagem_crypto/data_source/data_list_wallet.dart';
 import 'package:listagem_crypto/screens/details/details_page.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
+import 'package:listagem_crypto/use_cases/model/title_screen_pages.dart';
 
 class HomeWalletPage extends StatefulWidget {
   const HomeWalletPage({

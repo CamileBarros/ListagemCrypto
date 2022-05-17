@@ -5,6 +5,8 @@ import 'package:listagem_crypto/shared/themes/app_images.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart';
+import 'package:listagem_crypto/shared/widgets/screen_pages.dart';
+import 'package:listagem_crypto/use_cases/model/title_screen_pages.dart';
 
 class HomeMovement extends StatefulWidget {
   const HomeMovement({Key? key}) : super(key: key);
@@ -19,68 +21,56 @@ class _HomeMovementState extends State<HomeMovement> {
 
   @override
   Widget build(BuildContext context) {
-    final teste = DatasListWallet().containerDatas;
+    final textTitle = TitleScreen(AppLocalizations.of(context)!.nameMovement);
+    final containerDatas = DatasListWallet().containerDatas;
 
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100),
-          child: Container(
-              height: 200,
-              decoration: BoxDecoration(
-                  border: Border(
-                      bottom: BorderSide(width: 1, color: AppColors.primary))),
-              child: Center(
-                  child: ListTile(
-                title: Text(
-                  AppLocalizations.of(context)!.nameMovement,
-                  style: TextStyles.titlePrimary,
-                ),
-              )))),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ...teste.map((e) => Column(
-                  children: [
-                    Container(
-                        decoration: BoxDecoration(
-                            border: Border(
-                                bottom: BorderSide(
-                                    width: 1, color: AppColors.primary))),
-                        child: ListTile(
-                            leading: const Icon(Icons.pie_chart),
-                            title: Text(e.initialsCrypto),
-                            subtitle: Text(
-                              formatDate.format(e.purchaseDate),
-                            ),
-                            trailing: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      e.cryptoUnits.toString() +
-                                          " " +
-                                          e.initialsCrypto,
-                                      style: TextStyles.initialsText,
-                                    ),
-                                    Text(formatCurrency.format(e.cryptoUnits *
-                                        e.cryptoInfo.actualValueCrypto))
-                                  ],
-                                ),
-                                IconButton(
-                                  onPressed: () {},
-                                  icon: const ImageIcon(
-                                      AssetImage(AppImages.iconArrow)),
-                                ),
-                              ],
-                            )))
-                  ],
-                )),
-          ],
-        ),
+          child: ScreenPages(titles: textTitle)),
+      body: Column(
+        children: [
+          ...containerDatas.map((e) => Column(
+                children: [
+                  Container(
+                      decoration: BoxDecoration(
+                          border: Border(
+                              bottom: BorderSide(
+                                  width: 1, color: AppColors.primary))),
+                      child: ListTile(
+                          leading: const Icon(Icons.pie_chart),
+                          title: Text(e.initialsCrypto),
+                          subtitle: Text(
+                            formatDate.format(e.purchaseDate),
+                          ),
+                          trailing: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    e.cryptoUnits.toString() +
+                                        " " +
+                                        e.initialsCrypto,
+                                    style: TextStyles.initialsText,
+                                  ),
+                                  Text(formatCurrency.format(e.cryptoUnits *
+                                      e.cryptoInfo.actualValueCrypto))
+                                ],
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: const ImageIcon(
+                                    AssetImage(AppImages.iconArrow)),
+                              ),
+                            ],
+                          )))
+                ],
+              )),
+        ],
       ),
     );
   }
