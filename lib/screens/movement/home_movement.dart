@@ -4,6 +4,7 @@ import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_images.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:intl/intl.dart';
 
 class HomeMovement extends StatefulWidget {
   const HomeMovement({Key? key}) : super(key: key);
@@ -13,6 +14,9 @@ class HomeMovement extends StatefulWidget {
 }
 
 class _HomeMovementState extends State<HomeMovement> {
+  final formatCurrency = NumberFormat.simpleCurrency();
+  final formatDate = DateFormat('dd.MM.yy');
+
   @override
   Widget build(BuildContext context) {
     final teste = DatasListWallet().containerDatas;
@@ -32,30 +36,51 @@ class _HomeMovementState extends State<HomeMovement> {
                   style: TextStyles.titlePrimary,
                 ),
               )))),
-      body: Column(
-        children: [
-          ...teste.map((e) => Column(
-                children: [
-                  Container(
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: AppColors.primary))),
-                      child: ListTile(
-                        leading: const Icon(Icons.pie_chart),
-                        title: Text(e.initialsCrypto),
-                        subtitle: Text(
-                          e.purchaseDate.toString(),
-                        ),
-                        trailing: IconButton(
-                          onPressed: () {},
-                          icon:
-                              const ImageIcon(AssetImage(AppImages.iconArrow)),
-                        ),
-                      ))
-                ],
-              ))
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ...teste.map((e) => Column(
+                  children: [
+                    Container(
+                        decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    width: 1, color: AppColors.primary))),
+                        child: ListTile(
+                            leading: const Icon(Icons.pie_chart),
+                            title: Text(e.initialsCrypto),
+                            subtitle: Text(
+                              formatDate.format(e.purchaseDate),
+                            ),
+                            trailing: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      e.cryptoUnits.toString() +
+                                          " " +
+                                          e.initialsCrypto,
+                                      style: TextStyles.initialsText,
+                                    ),
+                                    Text(formatCurrency.format(e.cryptoUnits *
+                                        e.cryptoInfo.actualValueCrypto))
+                                  ],
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const ImageIcon(
+                                      AssetImage(AppImages.iconArrow)),
+                                ),
+                              ],
+                            )))
+                  ],
+                )),
+          ],
+        ),
       ),
     );
   }

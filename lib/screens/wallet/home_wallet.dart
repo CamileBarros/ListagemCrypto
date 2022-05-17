@@ -93,6 +93,8 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                                     duration: const Duration(milliseconds: 300),
                                     curve: Curves.easeInOut,
                                     child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Text(formatCurrency
                                             .format(e.investedCrypto)),
