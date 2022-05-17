@@ -28,49 +28,51 @@ class _HomeMovementState extends State<HomeMovement> {
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100),
           child: ScreenPages(titles: textTitle)),
-      body: Column(
-        children: [
-          ...containerDatas.map((e) => Column(
-                children: [
-                  Container(
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: AppColors.primary))),
-                      child: ListTile(
-                          leading: const Icon(Icons.pie_chart),
-                          title: Text(e.initialsCrypto),
-                          subtitle: Text(
-                            formatDate.format(e.purchaseDate),
-                          ),
-                          trailing: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    e.cryptoUnits.toString() +
-                                        " " +
-                                        e.initialsCrypto,
-                                    style: TextStyles.initialsText,
-                                  ),
-                                  Text(formatCurrency.format(e.cryptoUnits *
-                                      e.cryptoInfo.actualValueCrypto))
-                                ],
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: const ImageIcon(
-                                    AssetImage(AppImages.iconArrow)),
-                              ),
-                            ],
-                          )))
-                ],
-              )),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ...containerDatas.map((e) => Column(
+                  children: [
+                    Container(
+                        decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    width: 1, color: AppColors.primary))),
+                        child: ListTile(
+                            leading: const Icon(Icons.pie_chart),
+                            title: Text(e.initialsCrypto),
+                            subtitle: Text(
+                              formatDate.format(e.purchaseDate),
+                            ),
+                            trailing: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      e.cryptoUnits.toString() +
+                                          " " +
+                                          e.initialsCrypto,
+                                      style: TextStyles.initialsText,
+                                    ),
+                                    Text(formatCurrency.format(e.cryptoUnits *
+                                        e.cryptoInfo.actualValueCrypto))
+                                  ],
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const ImageIcon(
+                                      AssetImage(AppImages.iconArrow)),
+                                ),
+                              ],
+                            )))
+                  ],
+                )),
+          ],
+        ),
       ),
     );
   }
