@@ -34,7 +34,7 @@ class _HomeMovementState extends State<HomeMovement> {
             ...containerDatas.map((e) => Column(
                   children: [
                     Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             border: Border(
                                 bottom: BorderSide(
                                     width: 1, color: AppColors.primary))),

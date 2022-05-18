@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:listagem_crypto/data_source/data_period_filter.dart';
-import 'package:listagem_crypto/screens/details/details_page.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 
 class PeriodFilter extends StatefulWidget {

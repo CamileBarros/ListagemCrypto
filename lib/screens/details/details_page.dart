@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:listagem_crypto/data_source/data_list_wallet.dart';
 import 'package:listagem_crypto/data_source/data_period_filter.dart';
+import 'package:listagem_crypto/screens/currency_convertion/currency_convertion_page.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
 import 'package:listagem_crypto/shared/widgets/chart_bars_crypto.dart';
@@ -211,7 +212,13 @@ class _HomeDetailsState extends State<HomeDetails> {
                                 primary: Colors.white,
                                 backgroundColor: AppColors.brandPrimary,
                                 onSurface: AppColors.statusNeg),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const CurrencyConvertionPage()));
+                            },
                             child: Text(
                                 AppLocalizations.of(context)!.nameBtnConvert)),
                       )

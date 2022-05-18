@@ -9,7 +9,7 @@ class ConvertCoinButton extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.all(25),
+          margin: const EdgeInsets.all(25),
           child: TextButton(
               style: ButtonStyle(
                 foregroundColor:

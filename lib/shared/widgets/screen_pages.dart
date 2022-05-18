@@ -11,7 +11,7 @@ class ScreenPages extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: 200,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             border:
                 Border(bottom: BorderSide(width: 1, color: AppColors.primary))),
         child: Center(
