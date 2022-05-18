@@ -206,13 +206,15 @@ class _HomeDetailsState extends State<HomeDetails> {
                   child: Column(
                     children: <Widget>[
                       SizedBox(
-                        height: 44,
-                        width: 300,
-                        child: TextButton(
+                          height: 44,
+                          width: 300,
+                          child: TextButton(
                             style: TextButton.styleFrom(
                                 primary: Colors.white,
                                 backgroundColor: AppColors.brandPrimary,
                                 onSurface: AppColors.statusNeg),
+                            child: Text(
+                                AppLocalizations.of(context)!.nameBtnConvert),
                             onPressed: () {
                               Navigator.push(
                                   context,
@@ -220,9 +222,7 @@ class _HomeDetailsState extends State<HomeDetails> {
                                       builder: (context) =>
                                           const CurrencyConvertionPage()));
                             },
-                            child: Text(
-                                AppLocalizations.of(context)!.nameBtnConvert)),
-                      )
+                          ))
                     ],
                   ),
                 )
