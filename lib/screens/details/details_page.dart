@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -54,10 +56,9 @@ class _HomeDetailsState extends State<HomeDetails> {
 
   List<ChartsCryptoList> dateFilter(num value) {
     final List<ChartsCryptoList> dataChart = [];
-    num doubleInitial = 0;
     for (var i = 0; i < value; i++) {
-      num doubleAdd = doubleInitial + i;
-      num doubleAdd2 = doubleInitial + i / 2;
+      num doubleAdd = Random().nextDouble() + i;
+      num doubleAdd2 = Random().nextDouble() + i / 2;
 
       final ChartsCryptoList chart =
           ChartsCryptoList(marketCapt: doubleAdd2, period: doubleAdd.toInt());
