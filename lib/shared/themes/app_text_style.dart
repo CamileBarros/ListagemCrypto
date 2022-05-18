@@ -8,4 +8,7 @@ class TextStyles {
 
   static final titleText = GoogleFonts.lexendDeca(
       fontSize: 21, fontWeight: FontWeight.w700, color: AppColors.textPrimary);
+
+  static final initialsText = GoogleFonts.sourceSansPro(
+      fontSize: 18, fontWeight: FontWeight.w500, color: AppColors.textPrimary);
 }

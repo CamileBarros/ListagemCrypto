@@ -19,7 +19,7 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
   final formatCurrency = NumberFormat.simpleCurrency();
   final containerDatas = DatasListWallet().containerDatas;
   bool show = true;
-  int x = 2;
+  int x = 2; // part of logic of colors of the period's button
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
           preferredSize: const Size.fromHeight(200),
           child: Container(
               height: 230,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   border: Border(
                       bottom: BorderSide(width: 1, color: AppColors.primary))),
               child: Center(
@@ -52,7 +52,7 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                     ),
                   ),
                   trailing: IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.visibility,
                       color: AppColors.textPrimary,
                     ),
@@ -70,7 +70,7 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                     (e) => Column(
                       children: [
                         Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
                                         width: 1, color: AppColors.primary))),
@@ -93,6 +93,8 @@ class _HomeWalletPageState extends State<HomeWalletPage> {
                                     duration: const Duration(milliseconds: 300),
                                     curve: Curves.easeInOut,
                                     child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Text(formatCurrency
                                             .format(e.investedCrypto)),
