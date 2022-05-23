@@ -15,14 +15,17 @@ class CurrencyConvertionPage extends StatefulWidget {
 class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
   String? selectedValue;
   bool click = false;
+  bool teste = false;
 
-  final myController = TextEditingController();
+  final myControllerOne = TextEditingController();
+  final myControllerTwo = TextEditingController();
+
   int x = 100;
   double y = 1;
 
   @override
   void dispose() {
-    myController.dispose();
+    myControllerOne.dispose();
     super.dispose();
   }
 
@@ -33,6 +36,10 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
 
     void _clicked(bool clicked) {
       setState(() => click = clicked);
+    }
+
+    void _teste(bool testando) {
+      setState(() => teste = testando);
     }
 
     return Scaffold(
@@ -73,7 +80,7 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: TextField(
-                controller: myController,
+                controller: myControllerOne,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Montante a ser convertido',
@@ -100,13 +107,10 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
                                 onPressed: () {
                                   setState(() {
                                     _clicked(!click);
-                                    click
-                                        ? myController.text =
-                                            ((x / 100) * e.numPercent)
-                                                .toString()
-                                        : Error();
+                                    myControllerOne.text *
+                                        (e.numPercent / 100).toInt();
                                   });
-                                  print(myController.text);
+                                  print(myControllerOne.text);
                                 },
                                 child: Text(e.percent + "%")),
                           ),
@@ -140,10 +144,11 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
                 },
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: TextField(
-                decoration: InputDecoration(
+                controller: myControllerTwo,
+                decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Montante pós conversão',
                 ),
@@ -191,11 +196,11 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
                                 onSurface: AppColors.statusNeg),
                             child: const Text('Confirmar'),
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const CurrencyConvertionPage()));
+                              setState(() {
+                                _teste(!teste);
+                                myControllerTwo.text = myControllerOne.text;
+                              });
+                              print(myControllerTwo.text);
                             },
                           ))
                     ],
