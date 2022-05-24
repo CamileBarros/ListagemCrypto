@@ -107,10 +107,12 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
                                 onPressed: () {
                                   setState(() {
                                     _clicked(!click);
-                                    myControllerOne.text *
-                                        (e.numPercent / 100).toInt();
+                                    myControllerTwo.text =
+                                        myControllerOne.text *
+                                            (e.numPercent / 100).toInt();
                                   });
-                                  print(myControllerOne.text);
+                                  print(myControllerOne.text *
+                                      (e.numPercent / 100).toInt());
                                 },
                                 child: Text(e.percent + "%")),
                           ),
@@ -198,9 +200,9 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
                             onPressed: () {
                               setState(() {
                                 _teste(!teste);
-                                myControllerTwo.text = myControllerOne.text;
+                                // myControllerTwo.text = myControllerOne.text;
                               });
-                              print(myControllerTwo.text);
+                              // print(myControllerTwo.text);
                             },
                           ))
                     ],
