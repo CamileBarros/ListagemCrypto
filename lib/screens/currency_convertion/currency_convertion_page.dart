@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:listagem_crypto/data_source/data_button_percent.dart';
 import 'package:listagem_crypto/data_source/data_list_wallet.dart';
+import 'package:listagem_crypto/shared/widgets/pop_up_error.dart';
+import 'package:listagem_crypto/shared/widgets/successful_screen.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -173,11 +175,8 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
                                 onSurface: AppColors.statusNeg),
                             child: const Text('Cancelar'),
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const CurrencyConvertionPage()));
+                              myControllerOne.text = "";
+                              myControllerTwo.text = "";
                             },
                           ))
                     ],
@@ -191,19 +190,32 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
                           height: 44,
                           width: 125,
                           child: TextButton(
-                            style: TextButton.styleFrom(
-                                primary: AppColors.primary,
-                                backgroundColor: AppColors.brandPrimary,
-                                onSurface: AppColors.statusNeg),
-                            child: const Text('Confirmar'),
-                            onPressed: () {
-                              setState(() {
-                                _teste(!teste);
-                                // myControllerTwo.text = myControllerOne.text;
-                              });
-                              // print(myControllerTwo.text);
-                            },
-                          ))
+                              style: TextButton.styleFrom(
+                                  primary: AppColors.primary,
+                                  backgroundColor: AppColors.brandPrimary,
+                                  onSurface: AppColors.statusNeg),
+                              child: const Text('Confirmar'),
+                              onPressed: () {
+                                setState(() {
+                                  click
+                                      ? showModalBottomSheet(
+                                          context: context,
+                                          builder: (context) =>
+                                              const SuccessfulScreen())
+                                      : showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              const PopUpError());
+                                  // myControllerTwo.text != null
+                                  // _teste(!click);
+                                  // : Error();
+                                  myControllerOne.text = "";
+                                  myControllerTwo.text = "";
+                                  // myControllerTwo.text = myControllerOne.text;
+                                });
+                                // print(myControllerTwo.text);
+                                // },
+                              }))
                     ],
                   ),
                 ),
