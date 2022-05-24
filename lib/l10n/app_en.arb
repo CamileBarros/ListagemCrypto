@@ -27,16 +27,48 @@
     "@nameMinValue": {
       "description": "title of the item minimum value"
     },
-    "nameMaxValue": "maximum value",
+    "nameMaxValue": "Maximum value",
     "@nameMaxValue":{
       "description": "title of the item maximum value"
     },
-    "nameBtnConvert": "convert currency",
+    "nameBtnConvert": "Convert currency",
     "@nameBtnConvert": {
       "description": "title of the button convert currency"
     },
     "nameDetails": "Details",
     "@nameDetails":{
       "description": "title of the page details"
+    },
+    "nameCurrency": "Crypto",
+    "@nameCurrency": {
+      "description": "title of hint"
+    },
+    "textConvert": "Convert from: ",
+    "@textConvert": {
+      "description": "text of convertion"
+    },
+    "textValueConvert": "Amount to be converted",
+    "@textValueConvert": {
+      "description": "text of amount to be convert"
+    },
+    "textConvertion": "To receive at: ",
+    "@textConvertion": {
+      "description": "title of the button convert currency"
+    },
+    "textValueConverted": "Converted amount",
+    "@textValueConverted": {
+      "description": "title of the button convert currency"
+    }, 
+    "textConfirm": "Confirm",
+    "@textConfirm": {
+      "description": "title of the button convert currency"
+    },     
+    "textCancel": "Cancel",
+    "@textCancel": {
+      "description": "title of the button convert currency"
+    },                                
+    "textBack": "Back",
+    "@textBack": {
+      "description": "title of the button convert currency"
     }
 }

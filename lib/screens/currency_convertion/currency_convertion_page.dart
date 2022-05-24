@@ -17,13 +17,10 @@ class CurrencyConvertionPage extends StatefulWidget {
 class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
   String? selectedValue;
   bool click = false;
-  bool teste = false;
+  bool select = false;
 
   final myControllerOne = TextEditingController();
   final myControllerTwo = TextEditingController();
-
-  int x = 100;
-  double y = 1;
 
   @override
   void dispose() {
@@ -40,10 +37,6 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
       setState(() => click = clicked);
     }
 
-    void _teste(bool testando) {
-      setState(() => teste = testando);
-    }
-
     return Scaffold(
         appBar: AppBar(
           iconTheme: const IconThemeData(color: Colors.black),
@@ -57,7 +50,7 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
             Padding(
               padding: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
               child: Text(
-                'Converter de: ',
+                AppLocalizations.of(context)!.textConvert,
                 style: TextStyles.titleText,
               ),
             ),
@@ -65,10 +58,14 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: DropdownButtonFormField(
                 decoration: const InputDecoration(border: OutlineInputBorder()),
-                hint: const Text('Moeda'),
+                hint: Text(
+                  AppLocalizations.of(context)!.nameCurrency,
+                ),
                 items: containerDatas.map((e) {
                   return DropdownMenuItem(
-                    child: Text(e.nameCrypto),
+                    child: Text(
+                      e.nameCrypto,
+                    ),
                     value: e.nameCrypto,
                   );
                 }).toList(),
@@ -83,9 +80,9 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: TextField(
                 controller: myControllerOne,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Montante a ser convertido',
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  hintText: AppLocalizations.of(context)!.textValueConvert,
                 ),
                 keyboardType: TextInputType.number,
               ),
@@ -125,7 +122,7 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
             Padding(
               padding: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
               child: Text(
-                'Para receber em: ',
+                AppLocalizations.of(context)!.textConvertion,
                 style: TextStyles.titleText,
               ),
             ),
@@ -133,7 +130,9 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: DropdownButtonFormField(
                 decoration: const InputDecoration(border: OutlineInputBorder()),
-                hint: const Text('Moeda'),
+                hint: Text(
+                  AppLocalizations.of(context)!.nameCurrency,
+                ),
                 items: containerDatas.map((e) {
                   return DropdownMenuItem(
                     child: Text(e.nameCrypto),
@@ -151,9 +150,9 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: TextField(
                 controller: myControllerTwo,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Montante pós conversão',
+                decoration: InputDecoration(
+                  border: const OutlineInputBorder(),
+                  hintText: AppLocalizations.of(context)!.textValueConverted,
                 ),
                 keyboardType: TextInputType.number,
               ),
@@ -173,7 +172,8 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
                                 primary: AppColors.brandPrimary,
                                 backgroundColor: AppColors.primary,
                                 onSurface: AppColors.statusNeg),
-                            child: const Text('Cancelar'),
+                            child:
+                                Text(AppLocalizations.of(context)!.textCancel),
                             onPressed: () {
                               myControllerOne.text = "";
                               myControllerTwo.text = "";
@@ -194,7 +194,8 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
                                   primary: AppColors.primary,
                                   backgroundColor: AppColors.brandPrimary,
                                   onSurface: AppColors.statusNeg),
-                              child: const Text('Confirmar'),
+                              child: Text(
+                                  AppLocalizations.of(context)!.textConfirm),
                               onPressed: () {
                                 setState(() {
                                   click
