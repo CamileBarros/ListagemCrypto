@@ -70,5 +70,17 @@
     "textBack": "Back",
     "@textBack": {
       "description": "title of the button convert currency"
+    },
+    "textPerfomed": "Conversion performed",
+    "@textPerfomed": {
+      "description": "title of the button convert currency"
+    },
+    "textSuccesfully": "Conversion done successfully!",
+    "@textSuccesfully": {
+      "description": "title of the button convert currency"
+    },
+    "textError": "Ops! Something is wrong...",
+    "@textError": {
+      "description": "title of the button convert currency"
     }
 }

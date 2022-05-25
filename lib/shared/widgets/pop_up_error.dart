@@ -11,8 +11,8 @@ class PopUpError extends StatelessWidget {
       content: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
-        children: const [
-          Text('Opa! Algum campo não foi preenchido...'),
+        children: [
+          Text(AppLocalizations.of(context)!.textError),
         ],
       ),
       actions: <Widget>[

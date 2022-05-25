@@ -207,15 +207,9 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
                                           context: context,
                                           builder: (BuildContext context) =>
                                               const PopUpError());
-                                  // myControllerTwo.text != null
-                                  // _teste(!click);
-                                  // : Error();
                                   myControllerOne.text = "";
                                   myControllerTwo.text = "";
-                                  // myControllerTwo.text = myControllerOne.text;
                                 });
-                                // print(myControllerTwo.text);
-                                // },
                               }))
                     ],
                   ),

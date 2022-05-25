@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_images.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SuccessfulScreen extends StatelessWidget {
   const SuccessfulScreen({Key? key}) : super(key: key);
@@ -21,11 +22,11 @@ class SuccessfulScreen extends StatelessWidget {
             ),
           ),
           Text(
-            'Conversão Efetuada',
+            AppLocalizations.of(context)!.textPerfomed,
             style: TextStyles.titlePrimary,
           ),
           Text(
-            'Conversão efetuada com sucesso',
+            AppLocalizations.of(context)!.textSuccesfully,
             style: TextStyles.titleText,
           )
         ],

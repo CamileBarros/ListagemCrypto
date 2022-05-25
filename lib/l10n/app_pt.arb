@@ -16,5 +16,8 @@
     "textConfirm": "Cofirmar",
     "textBack": "Voltar",
     "textCancel": "Cancelar",
-    "nameCurrency": "Moeda"
+    "nameCurrency": "Moeda",
+    "textError": "Opa! Algum campo não foi preenchido...",
+    "textPerfomed": "Conversão Efetuada",
+    "textSuccesfully": "Conversão efetuada com sucesso!"
 }
