@@ -11,4 +11,7 @@ class TextStyles {
 
   static final initialsText = GoogleFonts.sourceSansPro(
       fontSize: 18, fontWeight: FontWeight.w500, color: AppColors.textPrimary);
+
+  static final linkText = GoogleFonts.sourceSansPro(
+      fontSize: 18, fontWeight: FontWeight.w500, color: AppColors.brandPrimary);
 }
