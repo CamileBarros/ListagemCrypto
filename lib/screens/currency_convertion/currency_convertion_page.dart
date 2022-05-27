@@ -82,7 +82,7 @@ class _CurrencyConvertionPageState extends State<CurrencyConvertionPage> {
                 controller: myControllerOne,
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(),
-                  hintText: AppLocalizations.of(context)!.textValueConvert,
+                  hintText: AppLocalizations.of(context)!.textConverted,
                 ),
                 keyboardType: TextInputType.number,
               ),
