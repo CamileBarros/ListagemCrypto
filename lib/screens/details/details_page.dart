@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -10,7 +9,7 @@ import 'package:listagem_crypto/shared/themes/app_colors.dart';
 import 'package:listagem_crypto/shared/themes/app_text_style.dart';
 import 'package:listagem_crypto/shared/widgets/chart_bars_crypto.dart';
 import 'package:listagem_crypto/shared/widgets/chart_line_crypto.dart';
-import 'package:listagem_crypto/use_cases/model/charts_model.dart';
+import 'package:listagem_crypto/shared/api/models/charts_model.dart';
 
 class HomeDetails extends StatefulWidget {
   final String name;

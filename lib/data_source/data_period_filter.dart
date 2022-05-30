@@ -1,4 +1,4 @@
-import 'package:listagem_crypto/use_cases/model/period_filter_model.dart';
+import 'package:listagem_crypto/shared/api/models/period_filter_model.dart';
 
 class DataPeriodFilter {
   final List<PeriodFilterList> periodDays = [

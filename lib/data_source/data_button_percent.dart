@@ -1,4 +1,4 @@
-import 'package:listagem_crypto/use_cases/model/button_percent_model.dart';
+import 'package:listagem_crypto/shared/api/models/button_percent_model.dart';
 
 class DataButtonPercent {
   final List<ButtonPercentList> percent = [
