@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:listagem_crypto/use_cases/model/crypto_info_model.dart';
+import 'package:listagem_crypto/shared/api/models/crypto_info_model.dart';
 
 class CryptoListModel {
   AssetImage iconCrypto;
